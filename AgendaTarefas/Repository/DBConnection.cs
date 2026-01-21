@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SQLite;
+
+namespace AgendaTarefas.Repository
+{
+    public class DBConnection
+    {
+        public static string connectionString = "Data Source=AgendaTarefas.db;Version=3;";
+
+
+        // Conexão com o BD
+        public static SQLiteConnection GetConnection()
+        {
+            return new SQLiteConnection(connectionString);
+        }
+
+        public static void InicializarBD()
+        {
+            // Verifica se o BD existe
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string criarTabelaTarefas = @"
+                CREATE TABLE IF NOT EXISTS Tarefas (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Titulo TEXT NOT NULL,
+                    Descricao TEXT,
+                    Concluida BOOLEAN NOT NULL,
+                    DataCriacao DATETIME NOT NULL
+                );";
+
+                using (var command = new SQLiteCommand(criarTabelaTarefas, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+    }
+}
