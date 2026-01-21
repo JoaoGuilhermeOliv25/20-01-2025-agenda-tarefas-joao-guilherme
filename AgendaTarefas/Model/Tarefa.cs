@@ -8,7 +8,6 @@ namespace AgendaTarefas.Model
 {
     public class Tarefa
     {
-        private int ID { get; set; }
         public string TituloTarefa { get; set; }
         public string DescricaoTarefa { get; set; }
         public bool Concluida { get; set; }
@@ -17,10 +16,9 @@ namespace AgendaTarefas.Model
 
 
         // Contrutor
-        public Tarefa(int id, string tituloTarefa, string descricaoTarefa, 
+        public Tarefa(string tituloTarefa, string descricaoTarefa, 
             bool concluida)
         {
-            this.ID = id;
             this.TituloTarefa = tituloTarefa;
             this.DescricaoTarefa = descricaoTarefa;
             this.Concluida = false;

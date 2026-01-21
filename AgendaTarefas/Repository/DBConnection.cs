@@ -18,6 +18,28 @@ namespace AgendaTarefas.Repository
             return new SQLiteConnection(connectionString);
         }
 
+        public static void InicializarBD()
+        {
+            // Verifica se o BD existe
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string criarTabelaTarefas = @"
+                CREATE TABLE IF NOT EXISTS Tarefas (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    Titulo TEXT NOT NULL,
+                    Descricao TEXT,
+                    Concluida BOOLEAN NOT NULL,
+                    DataCriacao DATETIME NOT NULL
+                );";
+
+                using (var command = new SQLiteCommand(criarTabelaTarefas, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
     }
 }

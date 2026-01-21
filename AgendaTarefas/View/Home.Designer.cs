@@ -41,8 +41,8 @@
             this.pbEditar = new System.Windows.Forms.PictureBox();
             this.pbAjuda = new System.Windows.Forms.PictureBox();
             this.flpTarefas = new System.Windows.Forms.FlowLayoutPanel();
-            this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             ((System.ComponentModel.ISupportInitialize)(this.pbExcluir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).BeginInit();
@@ -104,6 +104,7 @@
             this.btnCriarTarefa.TabIndex = 6;
             this.btnCriarTarefa.Text = "Criar Tarefa";
             this.btnCriarTarefa.UseVisualStyleBackColor = false;
+            this.btnCriarTarefa.Click += new System.EventHandler(this.btnCriarTarefa_Click);
             // 
             // btnExcluirTarefa
             // 
@@ -170,17 +171,17 @@
             this.flpTarefas.Size = new System.Drawing.Size(588, 620);
             this.flpTarefas.TabIndex = 12;
             // 
-            // sqLiteCommandBuilder1
-            // 
-            this.sqLiteCommandBuilder1.DataAdapter = null;
-            this.sqLiteCommandBuilder1.QuoteSuffix = "]";
-            // 
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(585, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // sqLiteCommandBuilder1
+            // 
+            this.sqLiteCommandBuilder1.DataAdapter = null;
+            this.sqLiteCommandBuilder1.QuoteSuffix = "]";
             // 
             // Home
             // 
