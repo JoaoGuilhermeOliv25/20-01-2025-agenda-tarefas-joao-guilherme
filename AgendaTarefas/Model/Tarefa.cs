@@ -9,10 +9,10 @@ namespace AgendaTarefas.Model
     public class Tarefa
     {
         private int ID { get; set; }
-        private string TituloTarefa { get; set; }
-        private string DescricaoTarefa { get; set; }
-        private bool Concluida { get; set; }
-        private DateTime DataCriacao { get; set; }
+        public string TituloTarefa { get; set; }
+        public string DescricaoTarefa { get; set; }
+        public bool Concluida { get; set; }
+        public DateTime DataCriacao { get; set; }
 
 
 

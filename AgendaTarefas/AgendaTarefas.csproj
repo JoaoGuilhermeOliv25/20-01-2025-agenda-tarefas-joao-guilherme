@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\CriarTarefa.cs" />
     <Compile Include="Model\Tarefa.cs" />
     <Compile Include="Repository\DBConnection.cs" />
     <Compile Include="View\Home.cs">
