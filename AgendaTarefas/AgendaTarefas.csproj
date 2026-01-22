@@ -75,6 +75,7 @@
     <Compile Include="Model\CriarTarefa.cs" />
     <Compile Include="Model\Tarefa.cs" />
     <Compile Include="Repository\DBConnection.cs" />
+    <Compile Include="Repository\TabelasDB.cs" />
     <Compile Include="View\Home.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -34,7 +34,20 @@ namespace AgendaTarefas
             }
             else
             {
-                Tarefa novaT = new Tarefa()
+                Tarefa novaT = new Tarefa(lbTitulo.Text, rtDescricao.Text, false);
+
+                // Criação das tarefas na interface
+                CriarTarefa novaTarefa = new CriarTarefa(novaT);
+                novaTarefa.FormarTarefa(flpTarefas);
+
+
+                // Mensagem de sucesso
+                MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                
+                
             }
         }
 
