@@ -1,4 +1,5 @@
 ﻿using AgendaTarefas.Model;
+using AgendaTarefas.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,29 +25,37 @@ namespace AgendaTarefas
         // Validações dos campos
         private void btnCriarTarefa_Click(object sender, EventArgs e)
         {
-            if (lbTitulo.Text == "")
+            try
             {
-                MessageBox.Show("Preencha todos os campos obrigatórios antes de criar uma tarefa!", "Atenção",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                ValidarDados validar = new ValidarDados();
+                validar.ValidarCampos(lbTitulo.Text, rtDescricao.Text);
 
-            else
-            {
+
                 Tarefa novaT = new Tarefa(lbTitulo.Text, rtDescricao.Text, false);
 
                 // Criação das tarefas na interface
-                CriarTarefa novaTarefa = new CriarTarefa(novaT);
-                novaTarefa.FormarTarefa(flpTarefas);
+                CriarCardTarefa novaTarefa = new CriarCardTarefa(novaT);
+                flpTarefas.Controls.Add(novaTarefa.FormarCardTarefa());
 
 
                 // Mensagem de sucesso
                 MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
+            catch (ArgumentException argErro)
+            {
+                MessageBox.Show("Erro de validação: " + argErro.Message, "Atenção!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
-                
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao criar a tarefa: " + erro.Message, "Atenção!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
+            
         }
 
     }

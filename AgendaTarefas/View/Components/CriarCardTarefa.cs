@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace AgendaTarefas.Model
 {
-    public class CriarTarefa
+    public class CriarCardTarefa
     {
         Panel painelT = new Panel();
 
@@ -17,7 +17,7 @@ namespace AgendaTarefas.Model
         Button finalizadoT = new Button();
         Label dataCriacaoT = new Label();
 
-        public CriarTarefa(Tarefa tarefaUser)
+        public CriarCardTarefa(Tarefa tarefaUser)
         {
             // Obter os dados da tarefa criada:
             this.tituloT.Text = tarefaUser.TituloTarefa;
@@ -28,21 +28,22 @@ namespace AgendaTarefas.Model
 
 
         // Método responsável por formar os componentes da tarefa
-        public void FormarTarefa(FlowLayoutPanel flpTarefas)
+        public Panel FormarCardTarefa()
         {
-
             // Painel da Tarefa
-            painelT.Size = new Size(flpTarefas.Width - 8, dataCriacaoT.Height + 130);
+            painelT.Size = new Size(630, dataCriacaoT.Height + 130);
             painelT.BorderStyle = BorderStyle.FixedSingle;
-            painelT.BackColor = Color.LightGray;
+            painelT.BackColor = Color.White;
             painelT.Location = new Point(0, 0);
             painelT.Cursor = Cursors.Hand;
 
+
             // Título da tarefa
-            tituloT.Font = new Font("Segoe UI", 19, FontStyle.Bold);
+            tituloT.Font = new Font("Segoe UI", 20, FontStyle.Bold);
             tituloT.ForeColor = Color.Black;
             tituloT.AutoSize = true;
-            tituloT.Location = new Point(5, 5);
+            tituloT.Location = new Point(2, 5);
+
 
             // Descrição da tarefa
 
@@ -51,7 +52,7 @@ namespace AgendaTarefas.Model
 
             if (descT.Text.Length > 120)
             {
-                descExibicao = descT.Text.Substring(0, 121) + "..."; // Mostrar uma parte da descrição apenas
+                descExibicao = descT.Text.Substring(0, 166) + "..."; // Mostrar uma parte da descrição apenas
             }
             else
             {
@@ -61,15 +62,17 @@ namespace AgendaTarefas.Model
             descT.Font = new Font("Segoe UI", 13, FontStyle.Regular);
             descT.ForeColor = Color.DarkSlateGray;
             descT.AutoSize = true;
-            descT.MaximumSize = new Size(painelT.Width - 10, 0);
+            descT.MaximumSize = new Size((painelT.Width - finalizadoT.Width) - 50, 0);
             descT.Location = new Point(5, 45);
             descT.Text = descExibicao;
 
+
             // Data de criação da tarefa
-            dataCriacaoT.Font = new Font("Segoe UI", 10, FontStyle.Italic);
+            dataCriacaoT.Font = new Font("Segoe UI", 12, FontStyle.Italic);
             dataCriacaoT.ForeColor = Color.DimGray;
             dataCriacaoT.AutoSize = true;
-            dataCriacaoT.Location = new Point(5, 115);
+            dataCriacaoT.Location = new Point(5, 128);
+
 
             // CheckBox da finalização da tarefa
             finalizadoT.Text = "";
@@ -77,7 +80,7 @@ namespace AgendaTarefas.Model
             finalizadoT.Size = new Size(60, 60);
             finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 30);
             finalizadoT.AutoSize = false;
-            finalizadoT.BackColor = Color.LightGray;
+            finalizadoT.BackColor = Color.White;
             finalizadoT.FlatAppearance.BorderSize = 2;
             finalizadoT.FlatStyle = FlatStyle.Popup;
             finalizadoT.TextAlign = ContentAlignment.MiddleCenter;
@@ -91,10 +94,7 @@ namespace AgendaTarefas.Model
             painelT.Controls.Add(finalizadoT);
 
 
-            flpTarefas.Controls.Add(painelT);
-
-            
-
+            return painelT;
 
         }
 
@@ -111,7 +111,8 @@ namespace AgendaTarefas.Model
                 if (msgResult == DialogResult.Yes)
                 {
                     finalizadoT.Text = "✔";
-                    finalizadoT.ForeColor = Color.Green;
+                    painelT.BackColor = Color.Gray;
+                    finalizadoT.BackColor = Color.Gray;
                 }
                 
                 painelT.Enabled = false;
