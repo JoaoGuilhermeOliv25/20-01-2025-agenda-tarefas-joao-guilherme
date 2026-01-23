@@ -13,15 +13,12 @@ namespace AgendaTarefas
 {
     public partial class Home : Form
     {
-        
 
         public Home()
         {
             InitializeComponent();
             
         }
-
-
 
 
         // Validações dos campos
@@ -32,6 +29,7 @@ namespace AgendaTarefas
                 MessageBox.Show("Preencha todos os campos obrigatórios antes de criar uma tarefa!", "Atenção",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
             else
             {
                 Tarefa novaT = new Tarefa(lbTitulo.Text, rtDescricao.Text, false);

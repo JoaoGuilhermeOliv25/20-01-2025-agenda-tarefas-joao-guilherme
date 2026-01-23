@@ -10,9 +10,11 @@ namespace AgendaTarefas.Model
 {
     public class CriarTarefa
     {
+        Panel painelT = new Panel();
+
         Label tituloT = new Label();
         Label descT = new Label();
-        CheckBox finalizadoT = new CheckBox();
+        Button finalizadoT = new Button();
         Label dataCriacaoT = new Label();
 
         public CriarTarefa(Tarefa tarefaUser)
@@ -20,7 +22,6 @@ namespace AgendaTarefas.Model
             // Obter os dados da tarefa criada:
             this.tituloT.Text = tarefaUser.TituloTarefa;
             this.descT.Text = tarefaUser.DescricaoTarefa;
-            this.finalizadoT.Checked = tarefaUser.Concluida;
             this.dataCriacaoT.Text = "Criado no dia " + tarefaUser.DataCriacao.ToString("dd/MM/yyyy");
        
         }
@@ -29,7 +30,6 @@ namespace AgendaTarefas.Model
         // Método responsável por formar os componentes da tarefa
         public void FormarTarefa(FlowLayoutPanel flpTarefas)
         {
-            Panel painelT = new Panel();
 
             // Painel da Tarefa
             painelT.Size = new Size(flpTarefas.Width - 8, dataCriacaoT.Height + 130);
@@ -71,17 +71,52 @@ namespace AgendaTarefas.Model
             dataCriacaoT.AutoSize = true;
             dataCriacaoT.Location = new Point(5, 115);
 
+            // CheckBox da finalização da tarefa
+            finalizadoT.Text = "";
+            finalizadoT.Font = new Font("Segoe UI", 25, FontStyle.Regular);
+            finalizadoT.Size = new Size(60, 60);
+            finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 30);
+            finalizadoT.AutoSize = false;
+            finalizadoT.BackColor = Color.LightGray;
+            finalizadoT.FlatAppearance.BorderSize = 2;
+            finalizadoT.FlatStyle = FlatStyle.Popup;
+            finalizadoT.TextAlign = ContentAlignment.MiddleCenter;
+            finalizadoT.Click += FinalizadoT_Click; // Evento do click
+
 
             // Adição dos elementos ao painel
             painelT.Controls.Add(tituloT);
             painelT.Controls.Add(descT);
             painelT.Controls.Add(dataCriacaoT);
+            painelT.Controls.Add(finalizadoT);
+
 
             flpTarefas.Controls.Add(painelT);
 
             
 
 
+        }
+
+
+        // Confirmação de finalização da tarefa - Evento
+        private void FinalizadoT_Click(object sender, EventArgs e)
+        {
+            if (finalizadoT.Text == "")
+            {
+                var msgResult = MessageBox.Show("Deseja marcar esta tarefa como finalizada?" +
+                    " Ela não poderá ser alterada depois!", "Confirmação",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (msgResult == DialogResult.Yes)
+                {
+                    finalizadoT.Text = "✔";
+                    finalizadoT.ForeColor = Color.Green;
+                }
+                
+                painelT.Enabled = false;
+
+            }
         }
     }
 }
