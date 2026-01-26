@@ -10,49 +10,84 @@ namespace AgendaTarefas.Model
 {
     public class CriarCardTarefa
     {
+        // Atributos de UI
         Panel painelT = new Panel();
+        Color corFinalizado = Color.Gray;
+        Color corNaoFinalizado = Color.White;
 
+        // Dados do usuário
         Label tituloT = new Label();
         Label descT = new Label();
         Button finalizadoT = new Button();
         Label dataCriacaoT = new Label();
+        private bool finalizado;
 
+
+        // Construtor da classe
         public CriarCardTarefa(Tarefa tarefaUser)
         {
             // Obter os dados da tarefa criada:
             this.tituloT.Text = tarefaUser.TituloTarefa;
             this.descT.Text = tarefaUser.DescricaoTarefa;
             this.dataCriacaoT.Text = "Criado no dia " + tarefaUser.DataCriacao.ToString("dd/MM/yyyy");
-       
+            this.finalizado = tarefaUser.Concluida;
         }
 
 
-        // Método responsável por formar os componentes da tarefa
+        // Método para formar os componentes da tarefa
         public Panel FormarCardTarefa()
         {
-            // Painel da Tarefa
+            // Criação dos componentes
+            CriarPainelC();
+            CriarTituloC();
+            CriarDescricaoC();
+            CriarDataCriacaoC();
+            CriarCheckBoxC();
+
+            // Adição dos elementos ao painel
+            painelT.Controls.Add(tituloT);
+            painelT.Controls.Add(descT);
+            painelT.Controls.Add(dataCriacaoT);
+            painelT.Controls.Add(finalizadoT);
+
+            return painelT;
+        }
+
+
+
+
+        // COMPONENTES DO CARD DA TAREFA
+
+        // Painel da tarefa - Card
+        private void CriarPainelC()
+        {
             painelT.Size = new Size(630, dataCriacaoT.Height + 130);
             painelT.BorderStyle = BorderStyle.FixedSingle;
-            painelT.BackColor = Color.White;
+            painelT.BackColor = corNaoFinalizado;
             painelT.Location = new Point(0, 0);
             painelT.Cursor = Cursors.Hand;
+        }
 
 
-            // Título da tarefa
+        // Titulo da tarefa
+        private void CriarTituloC()
+        {
             tituloT.Font = new Font("Segoe UI", 20, FontStyle.Bold);
             tituloT.ForeColor = Color.Black;
             tituloT.AutoSize = true;
             tituloT.Location = new Point(2, 5);
+        }
 
 
-            // Descrição da tarefa
-
+        // Descrição da tarefa
+        private void CriarDescricaoC()
+        {
             // Verifica se a descrição é muito longa
             string descExibicao;
 
             if (descT.Text.Length > 120)
             {
-                descExibicao = descT.Text.Substring(0, 166) + "..."; // Mostrar uma parte da descrição apenas
+                descExibicao = descT.Text.Substring(0, 166) + "...";
             }
             else
             {
@@ -65,17 +100,19 @@ namespace AgendaTarefas.Model
             descT.MaximumSize = new Size((painelT.Width - finalizadoT.Width) - 50, 0);
             descT.Location = new Point(5, 45);
             descT.Text = descExibicao;
+        }
 
 
-            // Data de criação da tarefa
-            dataCriacaoT.Font = new Font("Segoe UI", 12, FontStyle.Italic);
-            dataCriacaoT.ForeColor = Color.DimGray;
-            dataCriacaoT.AutoSize = true;
-            dataCriacaoT.Location = new Point(5, 128);
-
-
-            // CheckBox da finalização da tarefa
-            finalizadoT.Text = "";
+        // CheckBox da finalização da tarefa
+        private void CriarCheckBoxC()
+        {
+            if (finalizado)
+            {
+                finalizadoT.Text = "✔";
+                painelT.BackColor = corFinalizado;
+                finalizadoT.BackColor = corFinalizado;
+            }
+            
             finalizadoT.Font = new Font("Segoe UI", 25, FontStyle.Regular);
             finalizadoT.Size = new Size(60, 60);
             finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 30);
@@ -84,19 +121,20 @@ namespace AgendaTarefas.Model
             finalizadoT.FlatAppearance.BorderSize = 2;
             finalizadoT.FlatStyle = FlatStyle.Popup;
             finalizadoT.TextAlign = ContentAlignment.MiddleCenter;
-            finalizadoT.Click += FinalizadoT_Click; // Evento do click
-
-
-            // Adição dos elementos ao painel
-            painelT.Controls.Add(tituloT);
-            painelT.Controls.Add(descT);
-            painelT.Controls.Add(dataCriacaoT);
-            painelT.Controls.Add(finalizadoT);
-
-
-            return painelT;
-
+            finalizadoT.Click += FinalizadoT_Click;
         }
+
+
+        // Data de criação da tarefa
+        private void CriarDataCriacaoC()
+        {
+            dataCriacaoT.Font = new Font("Segoe UI", 12, FontStyle.Italic);
+            dataCriacaoT.ForeColor = Color.DimGray;
+            dataCriacaoT.AutoSize = true;
+            dataCriacaoT.Location = new Point(5, 128);
+        }
+
+
 
 
         // Confirmação de finalização da tarefa - Evento
@@ -104,19 +142,22 @@ namespace AgendaTarefas.Model
         {
             if (finalizadoT.Text == "")
             {
-                var msgResult = MessageBox.Show("Deseja marcar esta tarefa como finalizada?" +
-                    " Ela não poderá ser alterada depois!", "Confirmação",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var msgResult = MessageBox.Show(
+                    "Deseja marcar esta tarefa como finalizada?" +
+                    " Ela não poderá ser alterada depois!",
+                    "Confirmação",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 if (msgResult == DialogResult.Yes)
                 {
                     finalizadoT.Text = "✔";
-                    painelT.BackColor = Color.Gray;
-                    finalizadoT.BackColor = Color.Gray;
+                    painelT.BackColor = corFinalizado;
+                    finalizadoT.BackColor = corFinalizado;
                 }
-                
-                painelT.Enabled = false;
 
+                painelT.Enabled = false;
             }
         }
     }
