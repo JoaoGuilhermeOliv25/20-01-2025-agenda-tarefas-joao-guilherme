@@ -12,6 +12,7 @@ namespace AgendaTarefas.Model
     {
         // Atributos de UI
         Panel painelT = new Panel();
+        Button btnExcluirT = new Button();
         Color corFinalizado = Color.Gray;
         Color corNaoFinalizado = Color.White;
 
@@ -43,12 +44,14 @@ namespace AgendaTarefas.Model
             CriarDescricaoC();
             CriarDataCriacaoC();
             CriarCheckBoxC();
+            CriarExcluirTarefaC();
 
             // Adição dos elementos ao painel
             painelT.Controls.Add(tituloT);
             painelT.Controls.Add(descT);
             painelT.Controls.Add(dataCriacaoT);
             painelT.Controls.Add(finalizadoT);
+            painelT.Controls.Add(btnExcluirT);
 
             return painelT;
         }
@@ -115,7 +118,7 @@ namespace AgendaTarefas.Model
             
             finalizadoT.Font = new Font("Segoe UI", 25, FontStyle.Regular);
             finalizadoT.Size = new Size(60, 60);
-            finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 30);
+            finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 25);
             finalizadoT.AutoSize = false;
             finalizadoT.BackColor = Color.White;
             finalizadoT.FlatAppearance.BorderSize = 2;
@@ -132,6 +135,20 @@ namespace AgendaTarefas.Model
             dataCriacaoT.ForeColor = Color.DimGray;
             dataCriacaoT.AutoSize = true;
             dataCriacaoT.Location = new Point(5, 128);
+        }
+
+
+        // Excluir tarefa 
+        private void CriarExcluirTarefaC()
+        {
+            btnExcluirT.Text = "X";
+            btnExcluirT.TextAlign = ContentAlignment.MiddleCenter;
+            btnExcluirT.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            btnExcluirT.Size = new Size(25, 23);
+            btnExcluirT.Location = new Point(painelT.Width - 44, 5);
+            btnExcluirT.FlatStyle = FlatStyle.Popup;
+            btnExcluirT.BackColor = Color.IndianRed;
+            btnExcluirT.Cursor = Cursors.Hand;
         }
 
 
@@ -155,9 +172,11 @@ namespace AgendaTarefas.Model
                     finalizadoT.Text = "✔";
                     painelT.BackColor = corFinalizado;
                     finalizadoT.BackColor = corFinalizado;
+                    painelT.Enabled = false;
+                    btnExcluirT.Enabled = true; // RESOLVER ISSO!!!
                 }
 
-                painelT.Enabled = false;
+
             }
         }
     }

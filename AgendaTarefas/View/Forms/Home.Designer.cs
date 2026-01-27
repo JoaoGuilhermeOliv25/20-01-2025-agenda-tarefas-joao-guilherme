@@ -35,15 +35,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.rtDescricao = new System.Windows.Forms.RichTextBox();
             this.btnCriarTarefa = new System.Windows.Forms.Button();
-            this.btnExcluirTarefa = new System.Windows.Forms.Button();
-            this.btnEditarTarefa = new System.Windows.Forms.Button();
-            this.pbExcluir = new System.Windows.Forms.PictureBox();
-            this.pbEditar = new System.Windows.Forms.PictureBox();
             this.pbAjuda = new System.Windows.Forms.PictureBox();
             this.flpTarefas = new System.Windows.Forms.FlowLayoutPanel();
             this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExcluir)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbEditar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,57 +90,13 @@
             // 
             this.btnCriarTarefa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCriarTarefa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCriarTarefa.Location = new System.Drawing.Point(891, 671);
+            this.btnCriarTarefa.Location = new System.Drawing.Point(679, 671);
             this.btnCriarTarefa.Name = "btnCriarTarefa";
-            this.btnCriarTarefa.Size = new System.Drawing.Size(358, 73);
+            this.btnCriarTarefa.Size = new System.Drawing.Size(570, 73);
             this.btnCriarTarefa.TabIndex = 6;
             this.btnCriarTarefa.Text = "Criar Tarefa";
             this.btnCriarTarefa.UseVisualStyleBackColor = false;
             this.btnCriarTarefa.Click += new System.EventHandler(this.btnCriarTarefa_Click);
-            // 
-            // btnExcluirTarefa
-            // 
-            this.btnExcluirTarefa.BackColor = System.Drawing.Color.IndianRed;
-            this.btnExcluirTarefa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluirTarefa.Location = new System.Drawing.Point(675, 671);
-            this.btnExcluirTarefa.Name = "btnExcluirTarefa";
-            this.btnExcluirTarefa.Size = new System.Drawing.Size(102, 73);
-            this.btnExcluirTarefa.TabIndex = 7;
-            this.btnExcluirTarefa.UseVisualStyleBackColor = false;
-            // 
-            // btnEditarTarefa
-            // 
-            this.btnEditarTarefa.BackColor = System.Drawing.Color.Silver;
-            this.btnEditarTarefa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditarTarefa.Location = new System.Drawing.Point(783, 671);
-            this.btnEditarTarefa.Name = "btnEditarTarefa";
-            this.btnEditarTarefa.Size = new System.Drawing.Size(102, 73);
-            this.btnEditarTarefa.TabIndex = 8;
-            this.btnEditarTarefa.UseVisualStyleBackColor = false;
-            // 
-            // pbExcluir
-            // 
-            this.pbExcluir.BackColor = System.Drawing.Color.IndianRed;
-            this.pbExcluir.Enabled = false;
-            this.pbExcluir.Image = ((System.Drawing.Image)(resources.GetObject("pbExcluir.Image")));
-            this.pbExcluir.Location = new System.Drawing.Point(700, 689);
-            this.pbExcluir.Name = "pbExcluir";
-            this.pbExcluir.Size = new System.Drawing.Size(51, 42);
-            this.pbExcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbExcluir.TabIndex = 9;
-            this.pbExcluir.TabStop = false;
-            // 
-            // pbEditar
-            // 
-            this.pbEditar.BackColor = System.Drawing.Color.Silver;
-            this.pbEditar.Enabled = false;
-            this.pbEditar.Image = ((System.Drawing.Image)(resources.GetObject("pbEditar.Image")));
-            this.pbEditar.Location = new System.Drawing.Point(808, 689);
-            this.pbEditar.Name = "pbEditar";
-            this.pbEditar.Size = new System.Drawing.Size(51, 42);
-            this.pbEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbEditar.TabIndex = 10;
-            this.pbEditar.TabStop = false;
             // 
             // pbAjuda
             // 
@@ -183,10 +133,6 @@
             this.ClientSize = new System.Drawing.Size(1262, 769);
             this.Controls.Add(this.flpTarefas);
             this.Controls.Add(this.pbAjuda);
-            this.Controls.Add(this.pbEditar);
-            this.Controls.Add(this.pbExcluir);
-            this.Controls.Add(this.btnEditarTarefa);
-            this.Controls.Add(this.btnExcluirTarefa);
             this.Controls.Add(this.btnCriarTarefa);
             this.Controls.Add(this.rtDescricao);
             this.Controls.Add(this.label3);
@@ -200,8 +146,6 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agenda C# - João Guilherme de Oliveira";
-            ((System.ComponentModel.ISupportInitialize)(this.pbExcluir)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbEditar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -215,10 +159,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox rtDescricao;
         private System.Windows.Forms.Button btnCriarTarefa;
-        private System.Windows.Forms.Button btnExcluirTarefa;
-        private System.Windows.Forms.Button btnEditarTarefa;
-        private System.Windows.Forms.PictureBox pbExcluir;
-        private System.Windows.Forms.PictureBox pbEditar;
         private System.Windows.Forms.PictureBox pbAjuda;
         private System.Windows.Forms.FlowLayoutPanel flpTarefas;
         private System.Data.SQLite.SQLiteCommandBuilder sqLiteCommandBuilder1;
