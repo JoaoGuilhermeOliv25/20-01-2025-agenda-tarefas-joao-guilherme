@@ -68,7 +68,6 @@ namespace AgendaTarefas.Model
             painelT.BorderStyle = BorderStyle.FixedSingle;
             painelT.BackColor = corNaoFinalizado;
             painelT.Location = new Point(0, 0);
-            painelT.Cursor = Cursors.Hand;
         }
 
 
@@ -115,7 +114,7 @@ namespace AgendaTarefas.Model
                 painelT.BackColor = corFinalizado;
                 finalizadoT.BackColor = corFinalizado;
             }
-            
+
             finalizadoT.Font = new Font("Segoe UI", 25, FontStyle.Regular);
             finalizadoT.Size = new Size(60, 60);
             finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 25);
@@ -124,6 +123,7 @@ namespace AgendaTarefas.Model
             finalizadoT.FlatAppearance.BorderSize = 2;
             finalizadoT.FlatStyle = FlatStyle.Popup;
             finalizadoT.TextAlign = ContentAlignment.MiddleCenter;
+            finalizadoT.Cursor = Cursors.Hand;
             finalizadoT.Click += FinalizadoT_Click;
         }
 
@@ -149,6 +149,7 @@ namespace AgendaTarefas.Model
             btnExcluirT.FlatStyle = FlatStyle.Popup;
             btnExcluirT.BackColor = Color.IndianRed;
             btnExcluirT.Cursor = Cursors.Hand;
+            btnExcluirT.Click += btnExcluirT_Click;
         }
 
 
@@ -177,6 +178,20 @@ namespace AgendaTarefas.Model
                 }
 
 
+            }
+        }
+
+
+
+        // Confirmação da exclusão da tarefa - Evento
+        private void btnExcluirT_Click(object sender, EventArgs e)
+        {
+            var msg = MessageBox.Show("Tem certeza que deseja excluir essa tarefa?",
+                "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (msg == DialogResult.Yes)
+            {
+                painelT.Dispose();
             }
         }
     }
