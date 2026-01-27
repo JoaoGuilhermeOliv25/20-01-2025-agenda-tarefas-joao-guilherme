@@ -72,13 +72,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CriarTarefa.cs" />
+    <Compile Include="Services\ValidarDados.cs" />
+    <Compile Include="View\Components\CriarCardTarefa.cs" />
     <Compile Include="Model\Tarefa.cs" />
     <Compile Include="Repository\DBConnection.cs" />
-    <Compile Include="View\Home.cs">
+    <Compile Include="Repository\TabelasDB.cs" />
+    <Compile Include="View\Forms\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Home.Designer.cs">
+    <Compile Include="View\Forms\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -92,7 +94,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Home.resx">
+    <EmbeddedResource Include="View\Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
