@@ -10,7 +10,7 @@ namespace AgendaTarefas.Repository
 {
     public class TabelasDB
     {
-        // Método para Inserir uma nova tarefa no BD:
+        // Método para Inserir uma nova tarefa no BD
         public static void CriarTarefaDB(Tarefa tarefa)
         {
             using (var connection = DBConnection.GetConnection())
@@ -40,7 +40,7 @@ namespace AgendaTarefas.Repository
         }
 
 
-        // Método para obter todas as tarefas já criadas:
+        // Método para obter todas as tarefas já criadas
         public static List<Tarefa> ObterTodasTarefas()
         {
             List<Tarefa> tarefas = new List<Tarefa>();
@@ -69,6 +69,23 @@ namespace AgendaTarefas.Repository
             }
 
             return tarefas;
+        }
+
+
+
+        // Método para excluir uma tarefa do BD
+        public static void ExcluirTarefaDB(int tarefaId)
+        {
+            using (var connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+                string sql = "DELETE FROM Tarefas WHERE Id = @Id";
+                using (var cmd = new SQLiteCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Id", tarefaId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

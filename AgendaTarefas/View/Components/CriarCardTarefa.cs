@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgendaTarefas.Repository;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace AgendaTarefas.Model
         Color corNaoFinalizado = Color.White;
 
         // Dados do usuário
+        Tarefa tarefa;
         Label tituloT = new Label();
         Label descT = new Label();
         Button finalizadoT = new Button();
@@ -27,6 +29,9 @@ namespace AgendaTarefas.Model
         // Construtor da classe
         public CriarCardTarefa(Tarefa tarefaUser)
         {
+            // Referenciar a tarefa do usuário
+            this.tarefa = tarefaUser;
+
             // Obter os dados da tarefa criada:
             this.tituloT.Text = tarefaUser.TituloTarefa;
             this.descT.Text = tarefaUser.DescricaoTarefa;
@@ -192,6 +197,7 @@ namespace AgendaTarefas.Model
             if (msg == DialogResult.Yes)
             {
                 painelT.Dispose();
+                TabelasDB.ExcluirTarefaDB(tarefa.Id);
             }
         }
     }
