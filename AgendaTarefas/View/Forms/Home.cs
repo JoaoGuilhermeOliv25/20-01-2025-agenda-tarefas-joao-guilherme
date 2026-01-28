@@ -1,4 +1,5 @@
 ﻿using AgendaTarefas.Model;
+using AgendaTarefas.Repository;
 using AgendaTarefas.Services;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,26 @@ namespace AgendaTarefas
 {
     public partial class Home : Form
     {
+        List<Tarefa> listaTarefas = new List<Tarefa>();
 
         public Home()
         {
             InitializeComponent();
-            
+        }
+
+
+        // Ao carregar o Form:
+        private void Home_Load(object sender, EventArgs e)
+        {
+            DBConnection.InicializarBD();
+            listaTarefas = TabelasDB.ObterTodasTarefas();
+            CriarCardTarefa criarCardT;
+
+            foreach (Tarefa t in listaTarefas)
+            {
+                criarCardT = new CriarCardTarefa(t);
+                flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
+            }
         }
 
 
@@ -35,6 +51,7 @@ namespace AgendaTarefas
 
                 // Criação das tarefas na interface
                 CriarCardTarefa novaTarefa = new CriarCardTarefa(novaT);
+                TabelasDB.CriarTarefaDB(novaT);
                 flpTarefas.Controls.Add(novaTarefa.FormarCardTarefa());
 
 
@@ -58,5 +75,6 @@ namespace AgendaTarefas
             
         }
 
+        
     }
 }

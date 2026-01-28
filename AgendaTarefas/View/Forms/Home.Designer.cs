@@ -147,6 +147,7 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minha Agenda - 1.0.0";
+            this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
