@@ -73,6 +73,23 @@ namespace AgendaTarefas.Repository
 
 
 
+        // Método para marcar uma tarefa como concluída no BD 
+        public static void ConcluirTarefaDB(int tarefaId)
+        {
+            using (var connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+                string sql = "UPDATE Tarefas SET Concluida = 1 WHERE Id = @Id";
+                using (var cmd = new SQLiteCommand(sql, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Id", tarefaId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
         // Método para excluir uma tarefa do BD
         public static void ExcluirTarefaDB(int tarefaId)
         {

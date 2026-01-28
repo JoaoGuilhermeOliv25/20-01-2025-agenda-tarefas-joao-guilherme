@@ -28,11 +28,10 @@ namespace AgendaTarefas
         {
             DBConnection.InicializarBD();
             listaTarefas = TabelasDB.ObterTodasTarefas();
-            CriarCardTarefa criarCardT;
 
             foreach (Tarefa t in listaTarefas)
             {
-                criarCardT = new CriarCardTarefa(t);
+                CriarCardTarefa criarCardT = new CriarCardTarefa(t);
                 flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
             }
         }

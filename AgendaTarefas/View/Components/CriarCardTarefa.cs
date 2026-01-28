@@ -21,9 +21,9 @@ namespace AgendaTarefas.Model
         Tarefa tarefa;
         Label tituloT = new Label();
         Label descT = new Label();
-        Button finalizadoT = new Button();
+        public Button finalizadoT = new Button();
         Label dataCriacaoT = new Label();
-        private bool finalizado;
+        public bool finalizado;
 
 
         // Construtor da classe
@@ -102,7 +102,7 @@ namespace AgendaTarefas.Model
             }
 
             descT.Font = new Font("Segoe UI", 13, FontStyle.Regular);
-            descT.ForeColor = Color.DarkSlateGray;
+            descT.ForeColor = Color.Black;
             descT.AutoSize = true;
             descT.MaximumSize = new Size((painelT.Width - finalizadoT.Width) - 50, 0);
             descT.Location = new Point(5, 45);
@@ -118,6 +118,8 @@ namespace AgendaTarefas.Model
                 finalizadoT.Text = "✔";
                 painelT.BackColor = corFinalizado;
                 finalizadoT.BackColor = corFinalizado;
+                finalizadoT.Enabled = false;
+                finalizadoT.Cursor = Cursors.Default;
             }
 
             finalizadoT.Font = new Font("Segoe UI", 25, FontStyle.Regular);
@@ -137,7 +139,7 @@ namespace AgendaTarefas.Model
         private void CriarDataCriacaoC()
         {
             dataCriacaoT.Font = new Font("Segoe UI", 12, FontStyle.Italic);
-            dataCriacaoT.ForeColor = Color.DimGray;
+            dataCriacaoT.ForeColor = Color.Black;
             dataCriacaoT.AutoSize = true;
             dataCriacaoT.Location = new Point(5, 128);
         }
@@ -175,11 +177,10 @@ namespace AgendaTarefas.Model
 
                 if (msgResult == DialogResult.Yes)
                 {
+                    TabelasDB.ConcluirTarefaDB(tarefa.Id);
                     finalizadoT.Text = "✔";
                     painelT.BackColor = corFinalizado;
                     finalizadoT.BackColor = corFinalizado;
-                    painelT.Enabled = false;
-                    btnExcluirT.Enabled = true; // RESOLVER ISSO!!!
                 }
 
 
