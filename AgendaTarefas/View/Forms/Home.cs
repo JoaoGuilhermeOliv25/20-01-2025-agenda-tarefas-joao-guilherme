@@ -57,6 +57,8 @@ namespace AgendaTarefas
                 // Mensagem de sucesso
                 MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                LimparCampos();
             }
 
             catch (ArgumentException argErro)
@@ -74,6 +76,30 @@ namespace AgendaTarefas
             
         }
 
-        
+
+
+        // Limpar Campos
+        private void LimparCampos()
+        {
+            lbTitulo.Text = "";
+            rtDescricao.Text = "";
+        }
+
+
+
+        // Limitar caracteres na descrição
+        private void rtDescricao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            const int LIMITE = 166;
+            if (rtDescricao.TextLength > LIMITE)
+            {
+                int posicaoCursor = rtDescricao.SelectionStart;
+
+                rtDescricao.Text = rtDescricao.Text.Substring(0, LIMITE);
+
+                // Ajusta o cursor
+                rtDescricao.SelectionStart = Math.Min(posicaoCursor, LIMITE);
+            }
+        }
     }
 }

@@ -85,6 +85,7 @@
             this.rtDescricao.Size = new System.Drawing.Size(570, 184);
             this.rtDescricao.TabIndex = 5;
             this.rtDescricao.Text = "";
+            this.rtDescricao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtDescricao_KeyPress);
             // 
             // btnCriarTarefa
             // 

@@ -79,7 +79,7 @@ namespace AgendaTarefas.Model
         // Titulo da tarefa
         private void CriarTituloC()
         {
-            tituloT.Font = new Font("Segoe UI", 20, FontStyle.Bold);
+            tituloT.Font = new Font("Segoe UI", 16, FontStyle.Bold);
             tituloT.ForeColor = Color.Black;
             tituloT.AutoSize = true;
             tituloT.Location = new Point(2, 5);
