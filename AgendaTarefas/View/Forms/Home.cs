@@ -34,6 +34,10 @@ namespace AgendaTarefas
                 CriarCardTarefa criarCardT = new CriarCardTarefa(t);
                 flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
             }
+
+            NotifyIconService niNotificacao = new NotifyIconService();
+            niNotificacao.IniciarNotificacoes();
+
         }
 
 
@@ -84,6 +88,9 @@ namespace AgendaTarefas
             lbTitulo.Text = "";
             rtDescricao.Text = "";
         }
+
+
+
 
 
 

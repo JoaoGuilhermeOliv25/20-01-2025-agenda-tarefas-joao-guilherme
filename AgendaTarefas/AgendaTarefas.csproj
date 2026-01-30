@@ -106,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\NotifyIconService.cs" />
     <Compile Include="Services\ValidarDados.cs" />
     <Compile Include="View\Components\CriarCardTarefa.cs" />
     <Compile Include="Model\Tarefa.cs" />

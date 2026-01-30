@@ -104,5 +104,36 @@ namespace AgendaTarefas.Repository
                 }
             }
         }
+
+
+        // Método para obter todas as tarefas não finalizadas
+        public static List<Tarefa> ObterTarefasNFinalizadas()
+        {
+            using (var conneciton = DBConnection.GetConnection())
+            {
+                conneciton.Open();
+                string sql = "SELECT * FROM Tarefas WHERE Concluida = 0";
+
+                using (var cmd = new SQLiteCommand(sql, conneciton))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        List<Tarefa> tarefas = new List<Tarefa>();
+                        while (reader.Read())
+                        {
+                            Tarefa tarefa = new Tarefa(
+                                reader["Titulo"].ToString(),
+                                reader["Descricao"].ToString(),
+                                Convert.ToInt32(reader["Concluida"]) == 1
+                            );
+                            tarefa.Id = Convert.ToInt32(reader["Id"]);
+                            tarefa.DataCriacao = Convert.ToDateTime(reader["DataCriacao"]);
+                            tarefas.Add(tarefa);
+                        }
+                        return tarefas;
+                    }
+                }
+            }
+        }
     }
 }

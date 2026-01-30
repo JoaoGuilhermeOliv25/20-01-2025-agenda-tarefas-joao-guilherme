@@ -37,7 +37,6 @@
             this.btnCriarTarefa = new System.Windows.Forms.Button();
             this.pbAjuda = new System.Windows.Forms.PictureBox();
             this.flpTarefas = new System.Windows.Forms.FlowLayoutPanel();
-            this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,11 +120,6 @@
             this.flpTarefas.Size = new System.Drawing.Size(638, 596);
             this.flpTarefas.TabIndex = 12;
             // 
-            // sqLiteCommandBuilder1
-            // 
-            this.sqLiteCommandBuilder1.DataAdapter = null;
-            this.sqLiteCommandBuilder1.QuoteSuffix = "]";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -164,7 +158,6 @@
         private System.Windows.Forms.Button btnCriarTarefa;
         private System.Windows.Forms.PictureBox pbAjuda;
         private System.Windows.Forms.FlowLayoutPanel flpTarefas;
-        private System.Data.SQLite.SQLiteCommandBuilder sqLiteCommandBuilder1;
     }
 }
 
