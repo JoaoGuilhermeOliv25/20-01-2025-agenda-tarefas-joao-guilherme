@@ -202,6 +202,7 @@ namespace AgendaTarefas.Model
             {
                 painelT.Dispose();
                 TabelasDB.ExcluirTarefaDB(tarefa.Id);
+                Application.Restart();
             }
         }
     }
