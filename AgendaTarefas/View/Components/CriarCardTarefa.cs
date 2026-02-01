@@ -121,12 +121,15 @@ namespace AgendaTarefas.Model
                 finalizadoT.Enabled = false;
                 finalizadoT.Cursor = Cursors.Default;
             }
+            else
+            {
+                finalizadoT.BackColor = Color.White;
+            }
 
             finalizadoT.Font = new Font("Segoe UI", 25, FontStyle.Regular);
             finalizadoT.Size = new Size(60, 60);
             finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 25);
             finalizadoT.AutoSize = false;
-            finalizadoT.BackColor = Color.White;
             finalizadoT.FlatAppearance.BorderSize = 2;
             finalizadoT.FlatStyle = FlatStyle.Popup;
             finalizadoT.TextAlign = ContentAlignment.MiddleCenter;
