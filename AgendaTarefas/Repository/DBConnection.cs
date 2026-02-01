@@ -9,7 +9,7 @@ namespace AgendaTarefas.Repository
 {
     public class DBConnection
     {
-        public static string connectionString = "Data Source=AgendaTarefas.db;Version=3;";
+        public static string connectionString = "Data Source=AgendaTarefas.db;";
 
 
         // Conexão com o BD

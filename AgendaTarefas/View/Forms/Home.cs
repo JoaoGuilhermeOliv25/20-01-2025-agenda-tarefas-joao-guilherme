@@ -1,4 +1,5 @@
 ﻿using AgendaTarefas.Model;
+using AgendaTarefas.Repository;
 using AgendaTarefas.Services;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,30 @@ namespace AgendaTarefas
 {
     public partial class Home : Form
     {
+        const int LIMITE = 166;
+        List<Tarefa> listaTarefas = new List<Tarefa>();
 
         public Home()
         {
             InitializeComponent();
-            
+        }
+
+
+        // Ao carregar o Form:
+        private void Home_Load(object sender, EventArgs e)
+        {
+            DBConnection.InicializarBD();
+            listaTarefas = TabelasDB.ObterTodasTarefas();
+
+            foreach (Tarefa t in listaTarefas)
+            {
+                CriarCardTarefa criarCardT = new CriarCardTarefa(t);
+                flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
+            }
+
+            NotifyIconService niNotificacao = new NotifyIconService(notifyIcon);
+            niNotificacao.IniciarNotificacoes();
+
         }
 
 
@@ -35,12 +55,15 @@ namespace AgendaTarefas
 
                 // Criação das tarefas na interface
                 CriarCardTarefa novaTarefa = new CriarCardTarefa(novaT);
+                TabelasDB.CriarTarefaDB(novaT);
                 flpTarefas.Controls.Add(novaTarefa.FormarCardTarefa());
 
 
                 // Mensagem de sucesso
                 MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                LimparCampos();
             }
 
             catch (ArgumentException argErro)
@@ -58,5 +81,39 @@ namespace AgendaTarefas
             
         }
 
+
+
+        // Limpar Campos
+        private void LimparCampos()
+        {
+            lbTitulo.Text = "";
+            rtDescricao.Text = "";
+        }
+
+
+
+        // Limitar caracteres na descrição
+        private void rtDescricao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rtDescricao.TextLength > LIMITE)
+            {
+                int posicaoCursor = rtDescricao.SelectionStart;
+
+                rtDescricao.Text = rtDescricao.Text.Substring(0, LIMITE);
+
+                // Ajusta o cursor
+                rtDescricao.SelectionStart = Math.Min(posicaoCursor, LIMITE);
+            }
+        }
+
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Usuário clicou no X
+                e.Cancel = true;
+                this.Hide();
+            }
+        }
     }
 }

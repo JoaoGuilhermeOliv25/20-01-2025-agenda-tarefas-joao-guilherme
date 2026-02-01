@@ -8,6 +8,11 @@ namespace AgendaTarefas.Services
 {
     public class ValidarDados
     {
+        // Limite de caracteres
+        const int tituloMax = 46;
+        const int descMax = 166;
+
+
         public void ValidarCampos(string titulo, string desc)
         {
             if (string.IsNullOrWhiteSpace(titulo))
@@ -15,14 +20,14 @@ namespace AgendaTarefas.Services
                 throw new ArgumentException("O título da tarefa é obrigatório!");
             }
 
-            else if (titulo.Length > 22)
+            else if (titulo.Length > tituloMax)
             {
-                throw new ArgumentException("O título da tarefa não pode exceder 22 caracteres!");
+                throw new ArgumentException($"O título da tarefa não pode exceder {tituloMax} caracteres!");
             }
 
-            else if (desc.Length > 166)
+            else if (desc.Length > descMax)
             {
-                throw new ArgumentException("A descrição da tarefa não pode exceder 166 caracteres!");
+                throw new ArgumentException($"A descrição da tarefa não pode exceder {descMax} caracteres!");
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,7 +38,7 @@
             this.btnCriarTarefa = new System.Windows.Forms.Button();
             this.pbAjuda = new System.Windows.Forms.PictureBox();
             this.flpTarefas = new System.Windows.Forms.FlowLayoutPanel();
-            this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,12 +86,13 @@
             this.rtDescricao.Size = new System.Drawing.Size(570, 184);
             this.rtDescricao.TabIndex = 5;
             this.rtDescricao.Text = "";
+            this.rtDescricao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtDescricao_KeyPress);
             // 
             // btnCriarTarefa
             // 
             this.btnCriarTarefa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCriarTarefa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCriarTarefa.Location = new System.Drawing.Point(679, 515);
+            this.btnCriarTarefa.Location = new System.Drawing.Point(679, 647);
             this.btnCriarTarefa.Name = "btnCriarTarefa";
             this.btnCriarTarefa.Size = new System.Drawing.Size(570, 73);
             this.btnCriarTarefa.TabIndex = 6;
@@ -117,20 +119,20 @@
             this.flpTarefas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpTarefas.Location = new System.Drawing.Point(13, 124);
             this.flpTarefas.Name = "flpTarefas";
-            this.flpTarefas.Size = new System.Drawing.Size(638, 464);
+            this.flpTarefas.Size = new System.Drawing.Size(638, 596);
             this.flpTarefas.TabIndex = 12;
             // 
-            // sqLiteCommandBuilder1
+            // notifyIcon
             // 
-            this.sqLiteCommandBuilder1.DataAdapter = null;
-            this.sqLiteCommandBuilder1.QuoteSuffix = "]";
+            this.notifyIcon.Text = "notifyIcon1";
+            this.notifyIcon.Visible = true;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1262, 645);
+            this.ClientSize = new System.Drawing.Size(1262, 787);
             this.Controls.Add(this.flpTarefas);
             this.Controls.Add(this.pbAjuda);
             this.Controls.Add(this.btnCriarTarefa);
@@ -147,6 +149,8 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minha Agenda - 1.0.0";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
+            this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -162,7 +166,7 @@
         private System.Windows.Forms.Button btnCriarTarefa;
         private System.Windows.Forms.PictureBox pbAjuda;
         private System.Windows.Forms.FlowLayoutPanel flpTarefas;
-        private System.Data.SQLite.SQLiteCommandBuilder sqLiteCommandBuilder1;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 

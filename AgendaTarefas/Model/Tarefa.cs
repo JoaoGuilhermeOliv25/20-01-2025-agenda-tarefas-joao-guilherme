@@ -8,6 +8,7 @@ namespace AgendaTarefas.Model
 {
     public class Tarefa
     {
+        public int Id { get; set; }
         public string TituloTarefa { get; set; }
         public string DescricaoTarefa { get; set; }
         public bool Concluida { get; set; }
@@ -21,12 +22,9 @@ namespace AgendaTarefas.Model
         {
             this.TituloTarefa = tituloTarefa;
             this.DescricaoTarefa = descricaoTarefa;
-            this.Concluida = false;
+            this.Concluida = concluida;
             this.DataCriacao = DateTime.Now;
         }
-
-
-
 
     }
 }

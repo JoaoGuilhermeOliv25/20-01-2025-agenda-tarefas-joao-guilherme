@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgendaTarefas.Repository;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,16 +18,20 @@ namespace AgendaTarefas.Model
         Color corNaoFinalizado = Color.White;
 
         // Dados do usuário
+        Tarefa tarefa;
         Label tituloT = new Label();
         Label descT = new Label();
-        Button finalizadoT = new Button();
+        public Button finalizadoT = new Button();
         Label dataCriacaoT = new Label();
-        private bool finalizado;
+        public bool finalizado;
 
 
         // Construtor da classe
         public CriarCardTarefa(Tarefa tarefaUser)
         {
+            // Referenciar a tarefa do usuário
+            this.tarefa = tarefaUser;
+
             // Obter os dados da tarefa criada:
             this.tituloT.Text = tarefaUser.TituloTarefa;
             this.descT.Text = tarefaUser.DescricaoTarefa;
@@ -74,7 +79,7 @@ namespace AgendaTarefas.Model
         // Titulo da tarefa
         private void CriarTituloC()
         {
-            tituloT.Font = new Font("Segoe UI", 20, FontStyle.Bold);
+            tituloT.Font = new Font("Segoe UI", 16, FontStyle.Bold);
             tituloT.ForeColor = Color.Black;
             tituloT.AutoSize = true;
             tituloT.Location = new Point(2, 5);
@@ -97,7 +102,7 @@ namespace AgendaTarefas.Model
             }
 
             descT.Font = new Font("Segoe UI", 13, FontStyle.Regular);
-            descT.ForeColor = Color.DarkSlateGray;
+            descT.ForeColor = Color.Black;
             descT.AutoSize = true;
             descT.MaximumSize = new Size((painelT.Width - finalizadoT.Width) - 50, 0);
             descT.Location = new Point(5, 45);
@@ -113,13 +118,18 @@ namespace AgendaTarefas.Model
                 finalizadoT.Text = "✔";
                 painelT.BackColor = corFinalizado;
                 finalizadoT.BackColor = corFinalizado;
+                finalizadoT.Enabled = false;
+                finalizadoT.Cursor = Cursors.Default;
+            }
+            else
+            {
+                finalizadoT.BackColor = Color.White;
             }
 
             finalizadoT.Font = new Font("Segoe UI", 25, FontStyle.Regular);
             finalizadoT.Size = new Size(60, 60);
             finalizadoT.Location = new Point(painelT.Width - 90, (painelT.Height / 2) - 25);
             finalizadoT.AutoSize = false;
-            finalizadoT.BackColor = Color.White;
             finalizadoT.FlatAppearance.BorderSize = 2;
             finalizadoT.FlatStyle = FlatStyle.Popup;
             finalizadoT.TextAlign = ContentAlignment.MiddleCenter;
@@ -132,7 +142,7 @@ namespace AgendaTarefas.Model
         private void CriarDataCriacaoC()
         {
             dataCriacaoT.Font = new Font("Segoe UI", 12, FontStyle.Italic);
-            dataCriacaoT.ForeColor = Color.DimGray;
+            dataCriacaoT.ForeColor = Color.Black;
             dataCriacaoT.AutoSize = true;
             dataCriacaoT.Location = new Point(5, 128);
         }
@@ -170,11 +180,10 @@ namespace AgendaTarefas.Model
 
                 if (msgResult == DialogResult.Yes)
                 {
+                    TabelasDB.ConcluirTarefaDB(tarefa.Id);
                     finalizadoT.Text = "✔";
                     painelT.BackColor = corFinalizado;
                     finalizadoT.BackColor = corFinalizado;
-                    painelT.Enabled = false;
-                    btnExcluirT.Enabled = true; // RESOLVER ISSO!!!
                 }
 
 
@@ -192,6 +201,7 @@ namespace AgendaTarefas.Model
             if (msg == DialogResult.Yes)
             {
                 painelT.Dispose();
+                TabelasDB.ExcluirTarefaDB(tarefa.Id);
             }
         }
     }
