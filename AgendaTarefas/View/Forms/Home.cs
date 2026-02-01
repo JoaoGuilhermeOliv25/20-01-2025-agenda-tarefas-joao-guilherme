@@ -15,6 +15,7 @@ namespace AgendaTarefas
 {
     public partial class Home : Form
     {
+        const int LIMITE = 166;
         List<Tarefa> listaTarefas = new List<Tarefa>();
 
         public Home()
@@ -35,7 +36,7 @@ namespace AgendaTarefas
                 flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
             }
 
-            NotifyIconService niNotificacao = new NotifyIconService();
+            NotifyIconService niNotificacao = new NotifyIconService(notifyIcon);
             niNotificacao.IniciarNotificacoes();
 
         }
@@ -91,13 +92,9 @@ namespace AgendaTarefas
 
 
 
-
-
-
         // Limitar caracteres na descrição
         private void rtDescricao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            const int LIMITE = 166;
             if (rtDescricao.TextLength > LIMITE)
             {
                 int posicaoCursor = rtDescricao.SelectionStart;
@@ -106,6 +103,16 @@ namespace AgendaTarefas
 
                 // Ajusta o cursor
                 rtDescricao.SelectionStart = Math.Min(posicaoCursor, LIMITE);
+            }
+        }
+
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Usuário clicou no X
+                e.Cancel = true;
+                this.Hide();
             }
         }
     }

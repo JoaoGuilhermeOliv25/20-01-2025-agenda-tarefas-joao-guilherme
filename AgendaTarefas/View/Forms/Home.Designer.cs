@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.btnCriarTarefa = new System.Windows.Forms.Button();
             this.pbAjuda = new System.Windows.Forms.PictureBox();
             this.flpTarefas = new System.Windows.Forms.FlowLayoutPanel();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,6 +122,11 @@
             this.flpTarefas.Size = new System.Drawing.Size(638, 596);
             this.flpTarefas.TabIndex = 12;
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Text = "notifyIcon1";
+            this.notifyIcon.Visible = true;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -142,6 +149,7 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minha Agenda - 1.0.0";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).EndInit();
             this.ResumeLayout(false);
@@ -158,6 +166,7 @@
         private System.Windows.Forms.Button btnCriarTarefa;
         private System.Windows.Forms.PictureBox pbAjuda;
         private System.Windows.Forms.FlowLayoutPanel flpTarefas;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 
