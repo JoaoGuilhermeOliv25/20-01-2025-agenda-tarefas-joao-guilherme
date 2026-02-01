@@ -27,11 +27,13 @@ namespace AgendaTarefas.Services
             timer.Tick += timer_Tick;
         }
 
+
+
         // Iniciar o timer do componente
         public void IniciarNotificacoes()
         {
             timer.Start();
-        } 
+        }
 
 
         // Evento do timer
@@ -39,19 +41,17 @@ namespace AgendaTarefas.Services
         {
             Tarefa tarefaSort;
             List<Tarefa> tarefas;
-            
+
             tarefas = TabelasDB.ObterTarefasNFinalizadas();
             if (tarefas.Count > 0)
             {
                 tarefaSort = tarefas[random.Next(0, tarefas.Count)];
 
                 notifyIcon.BalloonTipTitle = "Agenda de Tarefas";
-                notifyIcon.ShowBalloonTip(5000, "Tarefas Pendentes!", 
+                notifyIcon.ShowBalloonTip(5000, "Tarefas Pendentes!",
                     $"\nA tarefa \"{tarefaSort.TituloTarefa}\" ainda não foi concluída!", ToolTipIcon.Info);
             }
         }
-
-
 
     }
 }

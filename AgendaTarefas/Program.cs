@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgendaTarefas.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace AgendaTarefas
         [STAThread]
         static void Main()
         {
+            AUMIDService.Definir("Agenda de Tarefas"); // Define o AppUserModelID para o aplicativo
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Home());
