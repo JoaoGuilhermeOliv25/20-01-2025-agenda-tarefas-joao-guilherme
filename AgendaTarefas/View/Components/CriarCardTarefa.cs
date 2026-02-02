@@ -1,4 +1,5 @@
 ﻿using AgendaTarefas.Repository;
+using AgendaTarefas.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -202,7 +203,7 @@ namespace AgendaTarefas.Model
             {
                 painelT.Dispose();
                 TabelasDB.ExcluirTarefaDB(tarefa.Id);
-                Application.Restart();
+                FiltroTarefaService.TratarFiltro(Home.FiltroAtual);
             }
         }
     }

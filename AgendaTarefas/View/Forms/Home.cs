@@ -18,16 +18,8 @@ namespace AgendaTarefas
         const int LIMITE = 166;
         List<Tarefa> listaTarefas = new List<Tarefa>();
         Label lbSemTarefa = new Label();
-        TipoFiltro tipoFiltro;
-
-
-        // Enum dos tipos de filtro
-        private enum TipoFiltro
-        {
-            Todas,
-            NFinalizadas,
-            Finalizadas
-        }
+        TipoFiltro tipoF;
+        public static TipoFiltro FiltroAtual { get; set; }
 
 
         public Home()
@@ -38,14 +30,14 @@ namespace AgendaTarefas
             lbSemTarefa.Font = new Font("Segoe UI", 14, FontStyle.Regular);
         }
 
-        
+
 
         // Ao carregar o Form:
         private void Home_Load(object sender, EventArgs e)
         {
             DBConnection.InicializarBD();
-            listaTarefas = TabelasDB.ObterTodasTarefas();
-            tipoFiltro = TipoFiltro.Todas;
+            tipoF = TipoFiltro.Todas;
+            FiltroTarefaService.TratarFiltro(tipoF);
 
             if (listaTarefas.Count == 0)
             {
@@ -83,15 +75,15 @@ namespace AgendaTarefas
                 // Criação das tarefas na interface
                 CriarCardTarefa novaTarefa = new CriarCardTarefa(novaT);
                 TabelasDB.CriarTarefaDB(novaT);
+                flpTarefas.Controls.Clear();
                 flpTarefas.Controls.Add(novaTarefa.FormarCardTarefa());
-
+                
 
                 // Mensagem de sucesso
                 MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
-                Application.Restart(); // Reinicia para atualizar a lista de tarefas
+                FiltroTarefaService.TratarFiltro(tipoF);
             }
 
             catch (ArgumentException argErro)
@@ -104,9 +96,9 @@ namespace AgendaTarefas
             {
                 MessageBox.Show("Erro ao criar a tarefa: " + erro.Message, "Atenção!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
-            
+
         }
 
 
@@ -140,8 +132,8 @@ namespace AgendaTarefas
         private void btnTodasT_Click(object sender, EventArgs e)
         {
             flpTarefas.Controls.Clear(); // Limpar o FlowLayoutPanel
-
-            listaTarefas = TabelasDB.ObterTodasTarefas();
+            tipoF = TipoFiltro.Todas;
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
             if (listaTarefas.Count == 0)
             {
@@ -158,15 +150,15 @@ namespace AgendaTarefas
                     flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
                 }
             }
-                
+
         }
 
         // Exibi todas as Tarefas Finalizadas
         private void btnNFinalizadas_Click(object sender, EventArgs e)
         {
             flpTarefas.Controls.Clear();
-
-            listaTarefas = TabelasDB.ObterTarefasNFinalizadas();
+            tipoF = TipoFiltro.NFinalizadas;
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
             if (listaTarefas.Count == 0)
             {
@@ -183,15 +175,15 @@ namespace AgendaTarefas
                     flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
                 }
             }
-                
+
         }
 
         // Exibi todas as Tarefas NÃO Finalizadas
         private void btnFinalizadas_Click(object sender, EventArgs e)
         {
             flpTarefas.Controls.Clear();
-
-            listaTarefas = TabelasDB.ObterTarefasFinalizadas();
+            tipoF = TipoFiltro.Finalizadas;
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
             if (listaTarefas.Count == 0)
             {
@@ -207,7 +199,7 @@ namespace AgendaTarefas
                     CriarCardTarefa criarCardT = new CriarCardTarefa(t);
                     flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
                 }
-            } 
+            }
         }
     }
 }
