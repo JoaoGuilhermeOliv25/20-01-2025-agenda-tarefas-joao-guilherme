@@ -186,8 +186,6 @@ namespace AgendaTarefas.Model
                     painelT.BackColor = corFinalizado;
                     finalizadoT.BackColor = corFinalizado;
                 }
-
-
             }
         }
 

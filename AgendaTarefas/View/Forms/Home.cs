@@ -83,7 +83,8 @@ namespace AgendaTarefas
                 MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                FiltroTarefaService.TratarFiltro(tipoF);
+                listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
+                LimparCampos();
             }
 
             catch (ArgumentException argErro)
@@ -100,6 +101,15 @@ namespace AgendaTarefas
             }
 
         }
+
+
+        // Método responsável por limpar os campos após a criação da tarefa
+        private void LimparCampos()
+        {
+            lbTitulo.Text = "";
+            rtDescricao.Text = "";
+        }
+
 
 
         // Limitar caracteres na descrição
