@@ -37,7 +37,7 @@ namespace AgendaTarefas
         {
             DBConnection.InicializarBD();
             tipoF = TipoFiltro.Todas;
-            FiltroTarefaService.TratarFiltro(tipoF);
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
             if (listaTarefas.Count == 0)
             {
