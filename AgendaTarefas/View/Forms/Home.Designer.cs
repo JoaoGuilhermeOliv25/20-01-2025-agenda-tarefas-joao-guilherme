@@ -179,7 +179,7 @@
             this.Name = "Home";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Minha Agenda - 1.0.0";
+            this.Text = "Agenda Tarefas - 1.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
             this.ResumeLayout(false);
