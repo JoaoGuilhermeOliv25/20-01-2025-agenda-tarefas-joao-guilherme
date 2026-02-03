@@ -17,23 +17,42 @@ namespace AgendaTarefas
     {
         const int LIMITE = 166;
         List<Tarefa> listaTarefas = new List<Tarefa>();
+        Label lbSemTarefa = new Label();
+        TipoFiltro tipoF;
+        public static TipoFiltro FiltroAtual { get; set; }
+
 
         public Home()
         {
             InitializeComponent();
+            lbSemTarefa.TextAlign = ContentAlignment.MiddleCenter;
+            lbSemTarefa.Size = new Size(flpTarefas.Width - 8, 60);
+            lbSemTarefa.Font = new Font("Segoe UI", 14, FontStyle.Regular);
         }
+
 
 
         // Ao carregar o Form:
         private void Home_Load(object sender, EventArgs e)
         {
             DBConnection.InicializarBD();
-            listaTarefas = TabelasDB.ObterTodasTarefas();
+            tipoF = TipoFiltro.Todas;
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
-            foreach (Tarefa t in listaTarefas)
+            if (listaTarefas.Count == 0)
             {
-                CriarCardTarefa criarCardT = new CriarCardTarefa(t);
-                flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
+                lbSemTarefa.Visible = true;
+                lbSemTarefa.Text = "Nenhuma tarefa criada!";
+                flpTarefas.Controls.Add(lbSemTarefa);
+            }
+            else
+            {
+                lbSemTarefa.Visible = false;
+                foreach (Tarefa t in listaTarefas)
+                {
+                    CriarCardTarefa criarCardT = new CriarCardTarefa(t);
+                    flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
+                }
             }
 
             NotifyIconService niNotificacao = new NotifyIconService(notifyIcon);
@@ -47,8 +66,7 @@ namespace AgendaTarefas
         {
             try
             {
-                ValidarDados validar = new ValidarDados();
-                validar.ValidarCampos(lbTitulo.Text, rtDescricao.Text);
+                ValidarDados.ValidarCampos(lbTitulo.Text, rtDescricao.Text);
 
 
                 Tarefa novaT = new Tarefa(lbTitulo.Text, rtDescricao.Text, false);
@@ -56,13 +74,15 @@ namespace AgendaTarefas
                 // Criação das tarefas na interface
                 CriarCardTarefa novaTarefa = new CriarCardTarefa(novaT);
                 TabelasDB.CriarTarefaDB(novaT);
-                flpTarefas.Controls.Add(novaTarefa.FormarCardTarefa());
+
+
+                btnTodasT_Click(sender, e); // Atualiza a exibição das tarefas
 
 
                 // Mensagem de sucesso
                 MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
                 LimparCampos();
             }
 
@@ -76,14 +96,13 @@ namespace AgendaTarefas
             {
                 MessageBox.Show("Erro ao criar a tarefa: " + erro.Message, "Atenção!",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
-            
+
         }
 
 
-
-        // Limpar Campos
+        // Método responsável por limpar os campos após a criação da tarefa
         private void LimparCampos()
         {
             lbTitulo.Text = "";
@@ -113,6 +132,82 @@ namespace AgendaTarefas
                 // Usuário clicou no X
                 e.Cancel = true;
                 this.Hide();
+            }
+        }
+
+
+
+        // Exibi todas as Tarefas
+        private void btnTodasT_Click(object sender, EventArgs e)
+        {
+            flpTarefas.Controls.Clear(); // Limpar o FlowLayoutPanel
+            tipoF = TipoFiltro.Todas;
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
+
+            if (listaTarefas.Count == 0)
+            {
+                lbSemTarefa.Visible = true;
+                lbSemTarefa.Text = "Nenhuma tarefa criada!";
+                flpTarefas.Controls.Add(lbSemTarefa);
+            }
+            else
+            {
+                lbSemTarefa.Visible = false;
+                foreach (Tarefa t in listaTarefas)
+                {
+                    CriarCardTarefa criarCardT = new CriarCardTarefa(t);
+                    flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
+                }
+            }
+
+        }
+
+        // Exibi todas as Tarefas Finalizadas
+        private void btnNFinalizadas_Click(object sender, EventArgs e)
+        {
+            flpTarefas.Controls.Clear();
+            tipoF = TipoFiltro.NFinalizadas;
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
+
+            if (listaTarefas.Count == 0)
+            {
+                lbSemTarefa.Visible = true;
+                lbSemTarefa.Text = "Nenhuma tarefa esta pendente!";
+                flpTarefas.Controls.Add(lbSemTarefa);
+            }
+            else
+            {
+                lbSemTarefa.Visible = false;
+                foreach (Tarefa t in listaTarefas)
+                {
+                    CriarCardTarefa criarCardT = new CriarCardTarefa(t);
+                    flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
+                }
+            }
+
+        }
+
+        // Exibi todas as Tarefas NÃO Finalizadas
+        private void btnFinalizadas_Click(object sender, EventArgs e)
+        {
+            flpTarefas.Controls.Clear();
+            tipoF = TipoFiltro.Finalizadas;
+            listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
+
+            if (listaTarefas.Count == 0)
+            {
+                lbSemTarefa.Visible = true;
+                lbSemTarefa.Text = "Nenhuma tarefa foi finalizada!";
+                flpTarefas.Controls.Add(lbSemTarefa);
+            }
+            else
+            {
+                lbSemTarefa.Visible = false;
+                foreach (Tarefa t in listaTarefas)
+                {
+                    CriarCardTarefa criarCardT = new CriarCardTarefa(t);
+                    flpTarefas.Controls.Add(criarCardT.FormarCardTarefa());
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 
 namespace AgendaTarefas.Repository
 {
@@ -18,26 +18,26 @@ namespace AgendaTarefas.Repository
                 connection.Open();
 
                 string sql = @"
-                    INSERT INTO Tarefas 
-                    (Titulo, Descricao, Concluida, DataCriacao)
-                    VALUES 
-                    (@Titulo, @Descricao, @Concluida, @DataCriacao);
-                    ";
+            INSERT INTO Tarefas 
+            (Titulo, Descricao, Concluida, DataCriacao)
+            VALUES 
+            (@Titulo, @Descricao, @Concluida, @DataCriacao);
+            SELECT last_insert_rowid();
+        ";
 
-                using (var cmd = new SQLiteCommand(sql, connection))
+                using (var cmd = new SqliteCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@Titulo", tarefa.TituloTarefa);
                     cmd.Parameters.AddWithValue("@Descricao", tarefa.DescricaoTarefa);
                     cmd.Parameters.AddWithValue("@Concluida", tarefa.Concluida ? 1 : 0);
                     cmd.Parameters.AddWithValue("@DataCriacao", tarefa.DataCriacao);
 
-                    cmd.ExecuteNonQuery();
-
-                    // PEGAR O ID GERADO
-                    tarefa.Id = (int)connection.LastInsertRowId;
+                    long idGerado = (long)cmd.ExecuteScalar();
+                    tarefa.Id = (int)idGerado;
                 }
             }
         }
+
 
 
         // Método para obter todas as tarefas já criadas
@@ -49,7 +49,7 @@ namespace AgendaTarefas.Repository
                 connection.Open();
                 string sql = "SELECT Id, Titulo, Descricao, Concluida, DataCriacao FROM Tarefas";
                 
-                using (var cmd = new SQLiteCommand(sql, connection))
+                using (var cmd = new SqliteCommand(sql, connection))
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -80,7 +80,7 @@ namespace AgendaTarefas.Repository
             {
                 connection.Open();
                 string sql = "UPDATE Tarefas SET Concluida = 1 WHERE Id = @Id";
-                using (var cmd = new SQLiteCommand(sql, connection))
+                using (var cmd = new SqliteCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", tarefaId);
                     cmd.ExecuteNonQuery();
@@ -97,7 +97,7 @@ namespace AgendaTarefas.Repository
             {
                 connection.Open();
                 string sql = "DELETE FROM Tarefas WHERE Id = @Id";
-                using (var cmd = new SQLiteCommand(sql, connection))
+                using (var cmd = new SqliteCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@Id", tarefaId);
                     cmd.ExecuteNonQuery();
@@ -106,7 +106,7 @@ namespace AgendaTarefas.Repository
         }
 
 
-        // Método para obter todas as tarefas não finalizadas
+        // Método para obter todas as tarefas NÃO finalizadas
         public static List<Tarefa> ObterTarefasNFinalizadas()
         {
             using (var conneciton = DBConnection.GetConnection())
@@ -114,7 +114,39 @@ namespace AgendaTarefas.Repository
                 conneciton.Open();
                 string sql = "SELECT * FROM Tarefas WHERE Concluida = 0";
 
-                using (var cmd = new SQLiteCommand(sql, conneciton))
+                using (var cmd = new SqliteCommand(sql, conneciton))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        List<Tarefa> tarefas = new List<Tarefa>();
+                        while (reader.Read())
+                        {
+                            Tarefa tarefa = new Tarefa(
+                                reader["Titulo"].ToString(),
+                                reader["Descricao"].ToString(),
+                                Convert.ToInt32(reader["Concluida"]) == 1
+                            );
+                            tarefa.Id = Convert.ToInt32(reader["Id"]);
+                            tarefa.DataCriacao = Convert.ToDateTime(reader["DataCriacao"]);
+                            tarefas.Add(tarefa);
+                        }
+                        return tarefas;
+                    }
+                }
+            }
+        }
+
+
+
+        // Método para obter todas as tarefas finalizadas
+        public static List<Tarefa> ObterTarefasFinalizadas()
+        {
+            using (var conneciton = DBConnection.GetConnection())
+            {
+                conneciton.Open();
+                string sql = "SELECT * FROM Tarefas WHERE Concluida = 1";
+
+                using (var cmd = new SqliteCommand(sql, conneciton))
                 {
                     using (var reader = cmd.ExecuteReader())
                     {

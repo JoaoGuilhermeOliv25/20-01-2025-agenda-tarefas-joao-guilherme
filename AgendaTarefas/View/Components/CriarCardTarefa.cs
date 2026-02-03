@@ -1,4 +1,5 @@
 ﻿using AgendaTarefas.Repository;
+using AgendaTarefas.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -185,8 +186,6 @@ namespace AgendaTarefas.Model
                     painelT.BackColor = corFinalizado;
                     finalizadoT.BackColor = corFinalizado;
                 }
-
-
             }
         }
 
@@ -202,6 +201,7 @@ namespace AgendaTarefas.Model
             {
                 painelT.Dispose();
                 TabelasDB.ExcluirTarefaDB(tarefa.Id);
+                FiltroTarefaService.TratarFiltro(Home.FiltroAtual);
             }
         }
     }

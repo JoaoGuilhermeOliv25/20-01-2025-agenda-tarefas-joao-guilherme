@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AgendaTarefas.Services
 {
-    public class ValidarDados
+    public static class ValidarDados
     {
         // Limite de caracteres
         const int tituloMax = 46;
         const int descMax = 166;
 
 
-        public void ValidarCampos(string titulo, string desc)
+        public static void ValidarCampos(string titulo, string desc)
         {
             if (string.IsNullOrWhiteSpace(titulo))
             {

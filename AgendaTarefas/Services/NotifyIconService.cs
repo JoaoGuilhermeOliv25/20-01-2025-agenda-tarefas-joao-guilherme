@@ -23,7 +23,7 @@ namespace AgendaTarefas.Services
             notifyIcon.Visible = true;
             notifyIcon.BalloonTipTitle = "Agenda de Tarefas";
 
-            timer.Interval = 60000;
+            timer.Interval = 7200000;
             timer.Tick += timer_Tick;
         }
 
