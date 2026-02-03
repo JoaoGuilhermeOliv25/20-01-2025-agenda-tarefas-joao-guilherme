@@ -66,8 +66,7 @@ namespace AgendaTarefas
         {
             try
             {
-                ValidarDados validar = new ValidarDados();
-                validar.ValidarCampos(lbTitulo.Text, rtDescricao.Text);
+                ValidarDados.ValidarCampos(lbTitulo.Text, rtDescricao.Text);
 
 
                 Tarefa novaT = new Tarefa(lbTitulo.Text, rtDescricao.Text, false);
@@ -75,15 +74,15 @@ namespace AgendaTarefas
                 // Criação das tarefas na interface
                 CriarCardTarefa novaTarefa = new CriarCardTarefa(novaT);
                 TabelasDB.CriarTarefaDB(novaT);
-                flpTarefas.Controls.Clear();
-                flpTarefas.Controls.Add(novaTarefa.FormarCardTarefa());
-                
+
+
+                btnTodasT_Click(sender, e); // Atualiza a exibição das tarefas
+
 
                 // Mensagem de sucesso
                 MessageBox.Show("Tarefa criada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
                 LimparCampos();
             }
 

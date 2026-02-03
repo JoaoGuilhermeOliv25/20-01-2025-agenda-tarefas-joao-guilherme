@@ -36,13 +36,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.rtDescricao = new System.Windows.Forms.RichTextBox();
             this.btnCriarTarefa = new System.Windows.Forms.Button();
-            this.pbAjuda = new System.Windows.Forms.PictureBox();
             this.flpTarefas = new System.Windows.Forms.FlowLayoutPanel();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnTodasT = new System.Windows.Forms.Button();
             this.btnNFinalizadas = new System.Windows.Forms.Button();
             this.btnFinalizadas = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -102,17 +100,6 @@
             this.btnCriarTarefa.Text = "Criar Tarefa";
             this.btnCriarTarefa.UseVisualStyleBackColor = false;
             this.btnCriarTarefa.Click += new System.EventHandler(this.btnCriarTarefa_Click);
-            // 
-            // pbAjuda
-            // 
-            this.pbAjuda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbAjuda.Image = ((System.Drawing.Image)(resources.GetObject("pbAjuda.Image")));
-            this.pbAjuda.Location = new System.Drawing.Point(1211, 13);
-            this.pbAjuda.Name = "pbAjuda";
-            this.pbAjuda.Size = new System.Drawing.Size(38, 35);
-            this.pbAjuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAjuda.TabIndex = 11;
-            this.pbAjuda.TabStop = false;
             // 
             // flpTarefas
             // 
@@ -179,7 +166,6 @@
             this.Controls.Add(this.btnNFinalizadas);
             this.Controls.Add(this.btnTodasT);
             this.Controls.Add(this.flpTarefas);
-            this.Controls.Add(this.pbAjuda);
             this.Controls.Add(this.btnCriarTarefa);
             this.Controls.Add(this.rtDescricao);
             this.Controls.Add(this.label3);
@@ -196,7 +182,6 @@
             this.Text = "Minha Agenda - 1.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbAjuda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,7 +194,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox rtDescricao;
         private System.Windows.Forms.Button btnCriarTarefa;
-        private System.Windows.Forms.PictureBox pbAjuda;
         private System.Windows.Forms.FlowLayoutPanel flpTarefas;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Button btnTodasT;

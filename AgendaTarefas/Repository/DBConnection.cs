@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 
 namespace AgendaTarefas.Repository
 {
@@ -13,9 +13,9 @@ namespace AgendaTarefas.Repository
 
 
         // Conexão com o BD
-        public static SQLiteConnection GetConnection()
+        public static SqliteConnection GetConnection()
         {
-            return new SQLiteConnection(connectionString);
+            return new SqliteConnection(connectionString);
         }
 
         public static void InicializarBD()
@@ -33,7 +33,7 @@ namespace AgendaTarefas.Repository
                     DataCriacao DATETIME NOT NULL
                 );";
 
-                using (var command = new SQLiteCommand(criarTabelaTarefas, connection))
+                using (var command = new SqliteCommand(criarTabelaTarefas, connection))
                 {
                     command.ExecuteNonQuery();
                 }
