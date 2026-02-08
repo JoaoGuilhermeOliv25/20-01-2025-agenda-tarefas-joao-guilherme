@@ -32,7 +32,9 @@ namespace AgendaTarefas.System
             }
         }
 
-        public static bool IsStartupEnabled()
+
+        // Verifica se esta hanilitado ou não, retorna um bool
+        public static bool VerificarEstado()
         {
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey(
                 @"Software\Microsoft\Windows\CurrentVersion\Run", false))

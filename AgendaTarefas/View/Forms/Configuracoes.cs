@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgendaTarefas.Infrastructure.Configuration;
+using AgendaTarefas.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,8 @@ namespace AgendaTarefas.View.Forms
         public Configuracoes()
         {
             InitializeComponent();
+
+            AppSettings config = SettingsManager.CarregarConfig();
         }
 
     }
