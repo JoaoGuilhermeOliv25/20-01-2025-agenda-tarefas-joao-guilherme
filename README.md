@@ -37,3 +37,27 @@ Essa separação evita acoplamento excessivo e facilita futuras manutenções ou
 
 
 ### Banco de Dados
+O sistema utiliza o **SQLite**, um banco de dados relacional embarcado, ideal para aplicações desktop leves. 
+ - Banco criado localmente
+ - Persistência automática das tarefas
+ - Integração direta com C# através de biblioteca específica
+
+### Requisistos para Execução
+ - Windows
+ - .NET Framework compatível com o projeto(v4.8)
+ - Visual Studio (recomendado para execução e edição do código)
+
+### Como Executar o Projeto
+ 1. Clone o repositório do projeto:
+```git clone https://github.com/JoaoGuilhermeOliv25/20-01-2025-agenda-tarefas-joao-guilherme.git```
+ 2. Abra a solução (AgendaTarefas.sln) no Visual Studio
+ 3. Restaure as dependências se nescessário
+ 4. Compile e execute o projeto
+
+### Autor
+**João Guilherme de Oliveira**
+
+Projeto desenvolvido para fins educacionais e construção de portfólio em desenvolvimento de software.
+
+
+
