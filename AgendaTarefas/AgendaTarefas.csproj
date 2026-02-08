@@ -138,6 +138,12 @@
     <Compile Include="Model\Tarefa.cs" />
     <Compile Include="Repository\DBConnection.cs" />
     <Compile Include="Repository\TabelasDB.cs" />
+    <Compile Include="View\Forms\Configuracoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\Configuracoes.Designer.cs">
+      <DependentUpon>Configuracoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Forms\Configuracoes.resx">
+      <DependentUpon>Configuracoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>

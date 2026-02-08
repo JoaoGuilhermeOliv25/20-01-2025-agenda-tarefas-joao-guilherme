@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AgendaTarefas.View.Forms;
 
 namespace AgendaTarefas
 {
@@ -216,7 +217,8 @@ namespace AgendaTarefas
         // Abrir o Form de Configurações
         private void pbSettings1_Click(object sender, EventArgs e)
         {
-
+            Configuracoes config = new Configuracoes();
+            config.ShowDialog();
         }
 
     }
