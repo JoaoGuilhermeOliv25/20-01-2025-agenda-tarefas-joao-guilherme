@@ -19,6 +19,26 @@ namespace AgendaTarefas.System
             {
                 key.SetValue(appNome, Assembly.GetExecutingAssembly().Location);
             }
-        } 
+        }
+
+
+        public static void DisableStartup()
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(
+                @"Software\Microsoft\Windows\CurrentVersion\Run", true))
+            {
+                if (key.GetValue(appNome) != null)
+                    key.DeleteValue(appNome);
+            }
+        }
+
+        public static bool IsStartupEnabled()
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(
+                @"Software\Microsoft\Windows\CurrentVersion\Run", false))
+            {
+                return key.GetValue(appNome) != null;
+            }
+        }
     }
 }

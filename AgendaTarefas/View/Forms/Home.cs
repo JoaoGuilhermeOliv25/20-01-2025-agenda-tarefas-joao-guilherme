@@ -210,5 +210,13 @@ namespace AgendaTarefas
                 }
             }
         }
+
+
+
+        // Abrir o Form de Configurações
+        private void pbSettings_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -41,6 +41,8 @@
             this.btnTodasT = new System.Windows.Forms.Button();
             this.btnNFinalizadas = new System.Windows.Forms.Button();
             this.btnFinalizadas = new System.Windows.Forms.Button();
+            this.pbSettings = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -156,12 +158,25 @@
             this.btnFinalizadas.UseVisualStyleBackColor = true;
             this.btnFinalizadas.Click += new System.EventHandler(this.btnFinalizadas_Click);
             // 
+            // pbSettings
+            // 
+            this.pbSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbSettings.Image = ((System.Drawing.Image)(resources.GetObject("pbSettings.Image")));
+            this.pbSettings.Location = new System.Drawing.Point(1206, 13);
+            this.pbSettings.Name = "pbSettings";
+            this.pbSettings.Size = new System.Drawing.Size(43, 42);
+            this.pbSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSettings.TabIndex = 17;
+            this.pbSettings.TabStop = false;
+            this.pbSettings.Click += new System.EventHandler(this.pbSettings_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1262, 787);
+            this.Controls.Add(this.pbSettings);
             this.Controls.Add(this.btnFinalizadas);
             this.Controls.Add(this.btnNFinalizadas);
             this.Controls.Add(this.btnTodasT);
@@ -182,6 +197,7 @@
             this.Text = "Agenda Tarefas - 1.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,6 +215,7 @@
         private System.Windows.Forms.Button btnTodasT;
         private System.Windows.Forms.Button btnNFinalizadas;
         private System.Windows.Forms.Button btnFinalizadas;
+        private System.Windows.Forms.PictureBox pbSettings;
     }
 }
 
