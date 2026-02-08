@@ -35,6 +35,8 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +54,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 14.2F);
-            this.checkBox1.Location = new System.Drawing.Point(22, 128);
+            this.checkBox1.Location = new System.Drawing.Point(22, 161);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(312, 36);
             this.checkBox1.TabIndex = 1;
@@ -64,7 +66,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 14.2F);
-            this.checkBox2.Location = new System.Drawing.Point(22, 249);
+            this.checkBox2.Location = new System.Drawing.Point(22, 329);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(263, 36);
             this.checkBox2.TabIndex = 2;
@@ -76,7 +78,7 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 14.2F);
-            this.checkBox3.Location = new System.Drawing.Point(22, 187);
+            this.checkBox3.Location = new System.Drawing.Point(22, 203);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(267, 36);
             this.checkBox3.TabIndex = 3;
@@ -87,7 +89,7 @@
             // 
             this.btnAplicar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAplicar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(204, 354);
+            this.btnAplicar.Location = new System.Drawing.Point(204, 474);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(162, 36);
             this.btnAplicar.TabIndex = 4;
@@ -98,18 +100,40 @@
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(13, 354);
+            this.btnCancelar.Location = new System.Drawing.Point(13, 474);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(162, 36);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 38);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Inicialização";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.2F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(15, 283);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 36);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Notificações";
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 411);
+            this.ClientSize = new System.Drawing.Size(379, 523);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.checkBox3);
@@ -137,5 +161,7 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
