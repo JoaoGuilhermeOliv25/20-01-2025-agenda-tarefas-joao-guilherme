@@ -1,4 +1,5 @@
 ﻿using AgendaTarefas.Infrastructure.Configuration;
+using AgendaTarefas.Infrastructure.Startup;
 using AgendaTarefas.Model;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,31 @@ namespace AgendaTarefas.Services
     {
         private AppSettings config = SettingsManager.CarregarConfig();
 
-        public void AplicarConfigs()
+        public void AplicarConfigsSystem()
         {
+            NotifyIconService notify = new NotifyIconService();
+
 
             if (config.iniciarWindows)
             {
-                
+                IniciarComWindows.HabilitarInicializacao();
             }
             else
             {
-
-
-
+                IniciarComWindows.DesabilitarInicializacao();
             }
+
+
+            if (config.mostrarNotificacoes)
+            {
+                notify.IniciarNotificacoes(config);
+            }
+            else
+            {
+                notify.PararNotificacoes();
+            }
+
+            // INICIAR MINIMIZADO!!!
         }
     }
 }

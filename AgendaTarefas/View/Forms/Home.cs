@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgendaTarefas.View.Forms;
+using AgendaTarefas.Infrastructure.Configuration;
 
 namespace AgendaTarefas
 {
@@ -39,6 +40,7 @@ namespace AgendaTarefas
             DBConnection.InicializarBD();
             tipoF = TipoFiltro.Todas;
             listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
+            AppSettings appS = SettingsManager.CarregarConfig();
 
             if (listaTarefas.Count == 0)
             {
@@ -57,7 +59,7 @@ namespace AgendaTarefas
             }
 
             NotifyIconService niNotificacao = new NotifyIconService(notifyIcon);
-            niNotificacao.IniciarNotificacoes();
+            niNotificacao.IniciarNotificacoes(appS);
 
         }
 

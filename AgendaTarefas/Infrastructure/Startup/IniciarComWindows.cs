@@ -49,4 +49,4 @@ namespace AgendaTarefas.Infrastructure.Startup
         }
     }
 }
-}
+

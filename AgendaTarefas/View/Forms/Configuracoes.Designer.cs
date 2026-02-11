@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuracoes));
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.cbIniciarWindows = new System.Windows.Forms.CheckBox();
+            this.cbHabilitarNoti = new System.Windows.Forms.CheckBox();
+            this.cbIniciarMinimizado = new System.Windows.Forms.CheckBox();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,41 +53,41 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Geral";
             // 
-            // checkBox1
+            // cbIniciarWindows
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 14.2F);
-            this.checkBox1.Location = new System.Drawing.Point(22, 177);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(312, 36);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Inicializar com o Windows";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbIniciarWindows.AutoSize = true;
+            this.cbIniciarWindows.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbIniciarWindows.Font = new System.Drawing.Font("Segoe UI", 14.2F);
+            this.cbIniciarWindows.Location = new System.Drawing.Point(22, 177);
+            this.cbIniciarWindows.Name = "cbIniciarWindows";
+            this.cbIniciarWindows.Size = new System.Drawing.Size(312, 36);
+            this.cbIniciarWindows.TabIndex = 1;
+            this.cbIniciarWindows.Text = "Inicializar com o Windows";
+            this.cbIniciarWindows.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbHabilitarNoti
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.checkBox2.Location = new System.Drawing.Point(22, 322);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(263, 36);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Habilitar Notificações";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbHabilitarNoti.AutoSize = true;
+            this.cbHabilitarNoti.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbHabilitarNoti.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.cbHabilitarNoti.Location = new System.Drawing.Point(22, 322);
+            this.cbHabilitarNoti.Name = "cbHabilitarNoti";
+            this.cbHabilitarNoti.Size = new System.Drawing.Size(263, 36);
+            this.cbHabilitarNoti.TabIndex = 2;
+            this.cbHabilitarNoti.Text = "Habilitar Notificações";
+            this.cbHabilitarNoti.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // cbIniciarMinimizado
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 14.2F);
-            this.checkBox3.Location = new System.Drawing.Point(22, 219);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(267, 36);
-            this.checkBox3.TabIndex = 3;
-            this.checkBox3.Text = "Inicializar Minimizado";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbIniciarMinimizado.AutoSize = true;
+            this.cbIniciarMinimizado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbIniciarMinimizado.Font = new System.Drawing.Font("Segoe UI", 14.2F);
+            this.cbIniciarMinimizado.Location = new System.Drawing.Point(22, 219);
+            this.cbIniciarMinimizado.Name = "cbIniciarMinimizado";
+            this.cbIniciarMinimizado.Size = new System.Drawing.Size(267, 36);
+            this.cbIniciarMinimizado.TabIndex = 3;
+            this.cbIniciarMinimizado.Text = "Inicializar Minimizado";
+            this.cbIniciarMinimizado.UseVisualStyleBackColor = true;
             // 
             // btnAplicar
             // 
@@ -99,6 +99,7 @@
             this.btnAplicar.TabIndex = 4;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = true;
+            this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
             // 
             // btnCancelar
             // 
@@ -191,9 +192,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAplicar);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cbIniciarMinimizado);
+            this.Controls.Add(this.cbHabilitarNoti);
+            this.Controls.Add(this.cbIniciarWindows);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -203,6 +204,7 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
+            this.Load += new System.EventHandler(this.Configuracoes_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,9 +213,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox cbIniciarWindows;
+        private System.Windows.Forms.CheckBox cbHabilitarNoti;
+        private System.Windows.Forms.CheckBox cbIniciarMinimizado;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label2;

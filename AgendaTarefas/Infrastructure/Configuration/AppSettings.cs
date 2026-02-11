@@ -13,7 +13,8 @@ namespace AgendaTarefas.Model
         public bool mostrarNotificacoes { get; set; }
         public int tempoNotificacao { get; set; }
 
-        public AppSettings(bool iniciarWindows, bool iniciarMinimizado, bool mostrarNotificacoes, int tempoNotificacao)
+        public AppSettings(bool iniciarWindows, bool iniciarMinimizado, bool mostrarNotificacoes,
+            int tempoNotificacao)
         {
             this.iniciarWindows = iniciarWindows;
             this.iniciarMinimizado = iniciarMinimizado;

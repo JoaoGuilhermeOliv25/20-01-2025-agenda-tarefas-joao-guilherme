@@ -149,8 +149,10 @@
   <ItemGroup>
     <Compile Include="Infrastructure\Configuration\AppSettings.cs" />
     <Compile Include="Infrastructure\Configuration\SettingsManager.cs" />
+    <Compile Include="Infrastructure\Startup\IniciarComWindows.cs" />
     <Compile Include="Model\TipoFiltro.cs" />
     <Compile Include="Infrastructure\Startup\AUMIDService.cs" />
+    <Compile Include="Services\AplicacaoConfigService.cs" />
     <Compile Include="Services\FiltroTarefaService.cs" />
     <Compile Include="Services\NotifyIconService.cs" />
     <Compile Include="Services\ValidarDados.cs" />
