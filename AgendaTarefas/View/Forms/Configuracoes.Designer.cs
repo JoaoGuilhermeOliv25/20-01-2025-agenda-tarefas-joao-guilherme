@@ -41,6 +41,7 @@
             this.rb30Min = new System.Windows.Forms.RadioButton();
             this.rb1H = new System.Windows.Forms.RadioButton();
             this.rb2H = new System.Windows.Forms.RadioButton();
+            this.btnConfigPadrao = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,6 +65,7 @@
             this.cbIniciarWindows.TabIndex = 1;
             this.cbIniciarWindows.Text = "Inicializar com o Windows";
             this.cbIniciarWindows.UseVisualStyleBackColor = true;
+            this.cbIniciarWindows.Click += new System.EventHandler(this.cbIniciarWindows_Click);
             // 
             // cbHabilitarNoti
             // 
@@ -76,6 +78,7 @@
             this.cbHabilitarNoti.TabIndex = 2;
             this.cbHabilitarNoti.Text = "Habilitar Notificações";
             this.cbHabilitarNoti.UseVisualStyleBackColor = true;
+            this.cbHabilitarNoti.Click += new System.EventHandler(this.cbHabilitarNoti_Click);
             // 
             // cbIniciarMinimizado
             // 
@@ -88,12 +91,13 @@
             this.cbIniciarMinimizado.TabIndex = 3;
             this.cbIniciarMinimizado.Text = "Inicializar Minimizado";
             this.cbIniciarMinimizado.UseVisualStyleBackColor = true;
+            this.cbIniciarMinimizado.Click += new System.EventHandler(this.cbIniciarMinimizado_Click);
             // 
             // btnAplicar
             // 
             this.btnAplicar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAplicar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(206, 569);
+            this.btnAplicar.Location = new System.Drawing.Point(437, 573);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(162, 36);
             this.btnAplicar.TabIndex = 4;
@@ -111,6 +115,7 @@
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label2
             // 
@@ -145,6 +150,7 @@
             // rb30Min
             // 
             this.rb30Min.AutoSize = true;
+            this.rb30Min.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rb30Min.Font = new System.Drawing.Font("Segoe UI", 12.2F);
             this.rb30Min.Location = new System.Drawing.Point(22, 406);
             this.rb30Min.Name = "rb30Min";
@@ -153,10 +159,12 @@
             this.rb30Min.TabStop = true;
             this.rb30Min.Text = "30 Minutos";
             this.rb30Min.UseVisualStyleBackColor = true;
+            this.rb30Min.Click += new System.EventHandler(this.rb30Min_Click);
             // 
             // rb1H
             // 
             this.rb1H.AutoSize = true;
+            this.rb1H.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rb1H.Font = new System.Drawing.Font("Segoe UI", 12.2F);
             this.rb1H.Location = new System.Drawing.Point(21, 446);
             this.rb1H.Name = "rb1H";
@@ -165,10 +173,12 @@
             this.rb1H.TabStop = true;
             this.rb1H.Text = "1 Hora";
             this.rb1H.UseVisualStyleBackColor = true;
+            this.rb1H.Click += new System.EventHandler(this.rb1H_Click);
             // 
             // rb2H
             // 
             this.rb2H.AutoSize = true;
+            this.rb2H.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rb2H.Font = new System.Drawing.Font("Segoe UI", 12.2F);
             this.rb2H.Location = new System.Drawing.Point(22, 486);
             this.rb2H.Name = "rb2H";
@@ -177,13 +187,27 @@
             this.rb2H.TabStop = true;
             this.rb2H.Text = "2 Horas";
             this.rb2H.UseVisualStyleBackColor = true;
+            this.rb2H.Click += new System.EventHandler(this.rb2H_Click);
+            // 
+            // btnConfigPadrao
+            // 
+            this.btnConfigPadrao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfigPadrao.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfigPadrao.Location = new System.Drawing.Point(269, 573);
+            this.btnConfigPadrao.Name = "btnConfigPadrao";
+            this.btnConfigPadrao.Size = new System.Drawing.Size(162, 36);
+            this.btnConfigPadrao.TabIndex = 12;
+            this.btnConfigPadrao.Text = "Padrão";
+            this.btnConfigPadrao.UseVisualStyleBackColor = true;
+            this.btnConfigPadrao.Click += new System.EventHandler(this.btnConfigPadrao_Click);
             // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(381, 622);
+            this.ClientSize = new System.Drawing.Size(612, 622);
+            this.Controls.Add(this.btnConfigPadrao);
             this.Controls.Add(this.rb2H);
             this.Controls.Add(this.rb1H);
             this.Controls.Add(this.rb30Min);
@@ -224,5 +248,6 @@
         private System.Windows.Forms.RadioButton rb30Min;
         private System.Windows.Forms.RadioButton rb1H;
         private System.Windows.Forms.RadioButton rb2H;
+        private System.Windows.Forms.Button btnConfigPadrao;
     }
 }

@@ -22,6 +22,7 @@ namespace AgendaTarefas
         Label lbSemTarefa = new Label();
         TipoFiltro tipoF;
         public static TipoFiltro FiltroAtual { get; set; }
+        AppSettings appS = SettingsManager.CarregarConfig();
 
 
         public Home()
@@ -40,7 +41,6 @@ namespace AgendaTarefas
             DBConnection.InicializarBD();
             tipoF = TipoFiltro.Todas;
             listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
-            AppSettings appS = SettingsManager.CarregarConfig();
 
             if (listaTarefas.Count == 0)
             {

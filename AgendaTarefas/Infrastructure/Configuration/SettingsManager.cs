@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AgendaTarefas.View.Forms;
 
 namespace AgendaTarefas.Infrastructure.Configuration
 {
@@ -52,7 +53,8 @@ namespace AgendaTarefas.Infrastructure.Configuration
                 iniciarWindows: true,
                 iniciarMinimizado: false,
                 mostrarNotificacoes: true,
-                tempoNotificacao: 3600000
+                tempoNotificacao: 1000
+            // tempoNotificacao: 3600000
             );
         }
     }

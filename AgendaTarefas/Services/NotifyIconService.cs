@@ -30,9 +30,9 @@ namespace AgendaTarefas.Services
 
 
         // Iniciar o timer do componente
-        public void IniciarNotificacoes(AppSettings appS)
+        public void IniciarNotificacoes(AppSettings appSetting)
         {
-            appS.tempoNotificacao = appS.tempoNotificacao;
+            timer.Interval = appSetting.tempoNotificacao;
             timer.Start();
         }
 

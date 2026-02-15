@@ -13,32 +13,24 @@ namespace AgendaTarefas.Services
     public class AplicacaoConfigService
     {
         private AppSettings config = SettingsManager.CarregarConfig();
+        NotifyIconService notify = new NotifyIconService();
 
-        public void AplicarConfigsSystem()
+        public void AplicarConfigsSystem(Home home)
         {
-            NotifyIconService notify = new NotifyIconService();
+            // Iniciar com Windows
+            if (config.iniciarWindows) IniciarComWindows.DesabilitarInicializacao();
+            else IniciarComWindows.DesabilitarInicializacao();
 
 
-            if (config.iniciarWindows)
-            {
-                IniciarComWindows.HabilitarInicializacao();
-            }
-            else
-            {
-                IniciarComWindows.DesabilitarInicializacao();
-            }
-
-
-            if (config.mostrarNotificacoes)
-            {
-                notify.IniciarNotificacoes(config);
-            }
-            else
-            {
-                notify.PararNotificacoes();
-            }
+            // Mostrar Notificações
+            if (config.mostrarNotificacoes) notify.IniciarNotificacoes(config);
+            else notify.PararNotificacoes();
+            
 
             // INICIAR MINIMIZADO!!!
+            if (config.iniciarMinimizado) home.WindowState = FormWindowState.Minimized;
+            else home.WindowState = FormWindowState.Normal;
+
         }
     }
 }

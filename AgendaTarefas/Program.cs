@@ -20,11 +20,16 @@ namespace AgendaTarefas
             Batteries.Init(); // Inicia as Baterreies - pacote responsável por funcionar o SQLite da Microsoft
             AUMIDService.Definir("Agenda de Tarefas"); // Define o AppUserModelID para o aplicativo
 
+            Home home = new Home(); // Cria uma instância da classe Home
+
             appSettings = SettingsManager.CarregarConfig(); // Carrega as configurações do aplicativo
+            AplicacaoConfigService configApply = new AplicacaoConfigService();
+            configApply.AplicarConfigsSystem(home);
 
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
+            Application.Run(home);
         }
+
+
     }
 }
