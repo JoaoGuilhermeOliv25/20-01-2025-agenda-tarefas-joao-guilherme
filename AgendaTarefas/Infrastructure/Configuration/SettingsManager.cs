@@ -53,7 +53,7 @@ namespace AgendaTarefas.Infrastructure.Configuration
                 iniciarWindows: true,
                 iniciarMinimizado: false,
                 mostrarNotificacoes: true,
-                tempoNotificacao: 1000
+                tempoNotificacao: 6000000
             // tempoNotificacao: 3600000
             );
         }

@@ -25,6 +25,7 @@ namespace AgendaTarefas.Services
             notifyIcon.Icon = System.Drawing.SystemIcons.Information;
             notifyIcon.Visible = true;
             notifyIcon.BalloonTipTitle = "Agenda de Tarefas";
+            timer.Tick += timer_Tick;
         }
 
 

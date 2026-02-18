@@ -23,6 +23,7 @@ namespace AgendaTarefas
         TipoFiltro tipoF;
         public static TipoFiltro FiltroAtual { get; set; }
         AppSettings appS = SettingsManager.CarregarConfig();
+        NotifyIcon notify = new NotifyIcon();
 
 
         public Home()
@@ -58,7 +59,8 @@ namespace AgendaTarefas
                 }
             }
 
-            NotifyIconService niNotificacao = new NotifyIconService(notifyIcon);
+            
+            NotifyIconService niNotificacao = new NotifyIconService(notify);
             niNotificacao.IniciarNotificacoes(appS);
 
         }

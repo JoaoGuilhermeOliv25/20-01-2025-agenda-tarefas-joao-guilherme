@@ -17,6 +17,10 @@ namespace AgendaTarefas.View.Forms
         AppSettings config;
         bool alterou = false;
         public static int tempNotificacao;
+        private readonly int _10min = 1000 * 60 * 10;
+        private readonly int _30min = 1000 * 60 * 30;
+        private readonly int _1h = 1000 * 60 * 60;
+        private readonly int _2h = 1000 * 60 * 60 * 2;
 
         public Configuracoes()
         {
@@ -47,7 +51,11 @@ namespace AgendaTarefas.View.Forms
                     cbIniciarWindows.Checked,
                     cbIniciarMinimizado.Checked,
                     cbHabilitarNoti.Checked,
-                    rb30Min.Checked ? 1000 : rb1H.Checked ? 3600000 : rb2H.Checked ? 7200000 : 1800000
+                    rb10Min.Checked ? 6000000 :
+                    rb30Min.Checked ? 1800000 :
+                    rb1H.Checked ? 3600000 :
+                    rb2H.Checked ? 7200000 :
+                    1800000
                 );
                 SettingsManager.SalvarConfig(novaConfig);
                 Application.Restart();
@@ -70,6 +78,7 @@ namespace AgendaTarefas.View.Forms
             if (config.mostrarNotificacoes)
             {
                 cbHabilitarNoti.Checked = true;
+                rb10Min.Enabled = true;
                 rb30Min.Enabled = true;
                 rb1H.Enabled = true;
                 rb2H.Enabled = true;
@@ -77,23 +86,33 @@ namespace AgendaTarefas.View.Forms
                 // Tempo das notificações:
                 switch (config.tempoNotificacao)
                 {
+                    case 6000000:
+                        rb10Min.Checked = true;
+                        tempNotificacao = _10min;
+                        break;
+
                     // 30min
-                    case 1000:
+                    case 1800000:
                         rb30Min.Checked = true;
+                        tempNotificacao = _30min;
                         break;
 
                     // 1H
                     case 3600000:
                         rb1H.Checked = true;
+                        tempNotificacao = _1h;
                         break;
 
                     // 2H
                     case 7200000:
                         rb2H.Checked = true;
+                        tempNotificacao = _2h;
                         break;
 
                     default:
-                        rb30Min.Checked = true;
+                        tempNotificacao = _10min;
+                        rb10Min.Checked = true;
+                        rb10Min.Enabled = true;
                         rb30Min.Enabled = false;
                         rb1H.Enabled = false;
                         rb2H.Enabled = false;
@@ -103,7 +122,8 @@ namespace AgendaTarefas.View.Forms
             else
             {
                 cbHabilitarNoti.Checked = false;
-                rb30Min.Checked = true;
+                rb10Min.Checked = true;
+                rb10Min.Enabled = false;
                 rb30Min.Enabled = false;
                 rb1H.Enabled = false;
                 rb2H.Enabled = false;
@@ -151,17 +171,25 @@ namespace AgendaTarefas.View.Forms
 
             if (cbHabilitarNoti.Checked)
             {
+                rb10Min.Enabled = true;
                 rb30Min.Enabled = true;
                 rb1H.Enabled = true;
                 rb2H.Enabled = true;
             }
             else
             {
+                rb10Min.Enabled = false;
                 rb30Min.Enabled = false;
                 rb1H.Enabled = false;
                 rb2H.Enabled = false;
             }
 
+            VerificarAplicacaoConfig();
+        }
+
+        private void rb10Min_Click(object sender, EventArgs e)
+        {
+            alterou = true;
             VerificarAplicacaoConfig();
         }
 
@@ -182,6 +210,7 @@ namespace AgendaTarefas.View.Forms
             alterou = true;
             VerificarAplicacaoConfig();
         }
+
 
 
 
@@ -209,5 +238,7 @@ namespace AgendaTarefas.View.Forms
                 Application.Restart();
             }
         }
+
+        
     }
 }
