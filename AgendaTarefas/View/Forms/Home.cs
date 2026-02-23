@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgendaTarefas.View.Forms;
 using AgendaTarefas.Infrastructure.Configuration;
+using AgendaTarefas.Infrastructure.Startup;
 
 namespace AgendaTarefas
 {
@@ -43,6 +44,8 @@ namespace AgendaTarefas
             tipoF = TipoFiltro.Todas;
             listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
+
+            // Carregar tarefas ao carregar o Form
             if (listaTarefas.Count == 0)
             {
                 lbSemTarefa.Visible = true;
@@ -59,9 +62,26 @@ namespace AgendaTarefas
                 }
             }
 
-            
+
+            // Habiltar ou desabilitar as notificações ao carregar o Form
             NotifyIconService niNotificacao = new NotifyIconService(notify);
-            niNotificacao.IniciarNotificacoes(appS);
+            if (appS.mostrarNotificacoes)
+            {
+                niNotificacao.IniciarNotificacoes(appS);
+            }
+            else
+            {
+                niNotificacao.PararNotificacoes();
+            }
+
+            if (appS.iniciarWindows)
+            {
+                IniciarComWindows.HabilitarInicializacao();
+            }
+            else
+            {
+                IniciarComWindows.DesabilitarInicializacao();
+            }
 
         }
 

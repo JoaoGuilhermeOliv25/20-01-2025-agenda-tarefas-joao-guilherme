@@ -56,7 +56,7 @@ namespace AgendaTarefas.Services
                 tarefaSort = tarefas[random.Next(0, tarefas.Count)];
 
                 notifyIcon.BalloonTipTitle = "Agenda de Tarefas";
-                notifyIcon.ShowBalloonTip(5000, "Tarefas Pendentes!",
+                notifyIcon.ShowBalloonTip(10000, "Tarefas Pendentes!",
                     $"\nA tarefa \"{tarefaSort.TituloTarefa}\" ainda não foi concluída!", ToolTipIcon.Info);
             }
         }

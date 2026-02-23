@@ -18,7 +18,7 @@ namespace AgendaTarefas.Services
         public void AplicarConfigsSystem(Home home)
         {
             // Iniciar com Windows
-            if (config.iniciarWindows) IniciarComWindows.DesabilitarInicializacao();
+            if (config.iniciarWindows) IniciarComWindows.HabilitarInicializacao();
             else IniciarComWindows.DesabilitarInicializacao();
 
 

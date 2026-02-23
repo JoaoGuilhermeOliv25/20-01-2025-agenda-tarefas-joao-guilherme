@@ -51,7 +51,7 @@ namespace AgendaTarefas.View.Forms
                     cbIniciarWindows.Checked,
                     cbIniciarMinimizado.Checked,
                     cbHabilitarNoti.Checked,
-                    rb10Min.Checked ? 6000000 :
+                    rb10Min.Checked ? 600000 :
                     rb30Min.Checked ? 1800000 :
                     rb1H.Checked ? 3600000 :
                     rb2H.Checked ? 7200000 :
@@ -86,7 +86,7 @@ namespace AgendaTarefas.View.Forms
                 // Tempo das notificações:
                 switch (config.tempoNotificacao)
                 {
-                    case 6000000:
+                    case 600000:  // Testar o tempo!!!
                         rb10Min.Checked = true;
                         tempNotificacao = _10min;
                         break;
@@ -129,8 +129,6 @@ namespace AgendaTarefas.View.Forms
                 rb2H.Enabled = false;
             }
         }
-
-
         
 
 
@@ -239,6 +237,6 @@ namespace AgendaTarefas.View.Forms
             }
         }
 
-        
+    
     }
 }
