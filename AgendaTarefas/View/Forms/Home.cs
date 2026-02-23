@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AgendaTarefas.View.Forms;
+using AgendaTarefas.Infrastructure.Configuration;
+using AgendaTarefas.Infrastructure.Startup;
 
 namespace AgendaTarefas
 {
@@ -20,6 +23,8 @@ namespace AgendaTarefas
         Label lbSemTarefa = new Label();
         TipoFiltro tipoF;
         public static TipoFiltro FiltroAtual { get; set; }
+        AppSettings appS = SettingsManager.CarregarConfig();
+        NotifyIcon notify = new NotifyIcon();
 
 
         public Home()
@@ -39,6 +44,8 @@ namespace AgendaTarefas
             tipoF = TipoFiltro.Todas;
             listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
+
+            // Carregar tarefas ao carregar o Form
             if (listaTarefas.Count == 0)
             {
                 lbSemTarefa.Visible = true;
@@ -55,8 +62,26 @@ namespace AgendaTarefas
                 }
             }
 
-            NotifyIconService niNotificacao = new NotifyIconService(notifyIcon);
-            niNotificacao.IniciarNotificacoes();
+
+            // Habiltar ou desabilitar as notificações ao carregar o Form
+            NotifyIconService niNotificacao = new NotifyIconService(notify);
+            if (appS.mostrarNotificacoes)
+            {
+                niNotificacao.IniciarNotificacoes(appS);
+            }
+            else
+            {
+                niNotificacao.PararNotificacoes();
+            }
+
+            if (appS.iniciarWindows)
+            {
+                IniciarComWindows.HabilitarInicializacao();
+            }
+            else
+            {
+                IniciarComWindows.DesabilitarInicializacao();
+            }
 
         }
 
@@ -210,5 +235,15 @@ namespace AgendaTarefas
                 }
             }
         }
+
+
+
+        // Abrir o Form de Configurações
+        private void pbSettings1_Click(object sender, EventArgs e)
+        {
+            Configuracoes config = new Configuracoes();
+            config.ShowDialog();
+        }
+
     }
 }

@@ -15,24 +15,32 @@ namespace AgendaTarefas.Services
         Timer timer = new Timer();
         Random random = new Random();
 
-        // Construtor
+        // Construtores
+
+        public NotifyIconService() { }
+
         public NotifyIconService(NotifyIcon notifyIcon)
         {
             this.notifyIcon = notifyIcon;
             notifyIcon.Icon = System.Drawing.SystemIcons.Information;
             notifyIcon.Visible = true;
             notifyIcon.BalloonTipTitle = "Agenda de Tarefas";
-
-            timer.Interval = 7200000;
             timer.Tick += timer_Tick;
         }
 
 
 
         // Iniciar o timer do componente
-        public void IniciarNotificacoes()
+        public void IniciarNotificacoes(AppSettings appSetting)
         {
+            timer.Interval = appSetting.tempoNotificacao;
             timer.Start();
+        }
+
+        // Para as Notificações
+        public void PararNotificacoes()
+        {
+            timer.Stop();
         }
 
 
@@ -48,7 +56,7 @@ namespace AgendaTarefas.Services
                 tarefaSort = tarefas[random.Next(0, tarefas.Count)];
 
                 notifyIcon.BalloonTipTitle = "Agenda de Tarefas";
-                notifyIcon.ShowBalloonTip(5000, "Tarefas Pendentes!",
+                notifyIcon.ShowBalloonTip(10000, "Tarefas Pendentes!",
                     $"\nA tarefa \"{tarefaSort.TituloTarefa}\" ainda não foi concluída!", ToolTipIcon.Info);
             }
         }
