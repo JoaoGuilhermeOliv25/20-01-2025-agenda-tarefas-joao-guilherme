@@ -17,17 +17,27 @@ namespace AgendaTarefas
         [STAThread]
         static void Main()
         {
-            Batteries.Init(); // Inicia as Baterreies - pacote responsável por funcionar o SQLite da Microsoft
-            AUMIDService.Definir("Agenda de Tarefas"); // Define o AppUserModelID para o aplicativo
+            try
+            {
+                Batteries.Init(); // Inicia as Baterreies - pacote responsável por funcionar o SQLite da Microsoft
+                AUMIDService.Definir("Agenda de Tarefas"); // Define o AppUserModelID para o aplicativo
 
-            Home home = new Home(); // Cria uma instância da classe Home
+                Home home = new Home(); // Cria uma instância da classe Home
 
-            appSettings = SettingsManager.CarregarConfig(); // Carrega as configurações do aplicativo
-            AplicacaoConfigService configApply = new AplicacaoConfigService();
-            configApply.AplicarConfigsSystem(home);
+                appSettings = SettingsManager.CarregarConfig(); // Carrega as configurações do aplicativo
+                AplicacaoConfigService configApply = new AplicacaoConfigService();
+                configApply.AplicarConfigsSystem(home);
 
-            Application.EnableVisualStyles();
-            Application.Run(home);
+                Application.EnableVisualStyles();
+                Application.Run(home);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+            
+            
         }
 
 

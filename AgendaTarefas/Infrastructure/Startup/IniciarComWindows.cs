@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AgendaTarefas.Infrastructure.Startup
 {
@@ -17,9 +18,9 @@ namespace AgendaTarefas.Infrastructure.Startup
         public static void HabilitarInicializacao()
         {
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey(
-                     @"Software\Microsoft\Windows\CurrentVersion\Run", writable: true))
+                  @"Software\Microsoft\Windows\CurrentVersion\Run", true))
             {
-                key.SetValue(AppName, Assembly.GetExecutingAssembly().Location);
+                key.SetValue(AppName, $"\"{Application.ExecutablePath}\"");
             }
         }
 
