@@ -42,6 +42,8 @@
             this.btnNFinalizadas = new System.Windows.Forms.Button();
             this.btnFinalizadas = new System.Windows.Forms.Button();
             this.pbSettings1 = new System.Windows.Forms.PictureBox();
+            this.lbNumLetTitulo = new System.Windows.Forms.Label();
+            this.lbNumLetDesc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbSettings1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +73,7 @@
             this.lbTitulo.Name = "lbTitulo";
             this.lbTitulo.Size = new System.Drawing.Size(570, 43);
             this.lbTitulo.TabIndex = 3;
+            this.lbTitulo.TextChanged += new System.EventHandler(this.lbTitulo_TextChanged);
             // 
             // label3
             // 
@@ -86,9 +89,10 @@
             // 
             this.rtDescricao.Location = new System.Drawing.Point(679, 298);
             this.rtDescricao.Name = "rtDescricao";
-            this.rtDescricao.Size = new System.Drawing.Size(570, 184);
+            this.rtDescricao.Size = new System.Drawing.Size(570, 281);
             this.rtDescricao.TabIndex = 5;
             this.rtDescricao.Text = "";
+            this.rtDescricao.TextChanged += new System.EventHandler(this.rtDescricao_TextChanged);
             this.rtDescricao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtDescricao_KeyPress);
             // 
             // btnCriarTarefa
@@ -170,12 +174,34 @@
             this.pbSettings1.TabStop = false;
             this.pbSettings1.Click += new System.EventHandler(this.pbSettings1_Click);
             // 
+            // lbNumLetTitulo
+            // 
+            this.lbNumLetTitulo.AutoSize = true;
+            this.lbNumLetTitulo.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumLetTitulo.Location = new System.Drawing.Point(1190, 221);
+            this.lbNumLetTitulo.Name = "lbNumLetTitulo";
+            this.lbNumLetTitulo.Size = new System.Drawing.Size(53, 25);
+            this.lbNumLetTitulo.TabIndex = 17;
+            this.lbNumLetTitulo.Text = "0/100";
+            // 
+            // lbNumLetDesc
+            // 
+            this.lbNumLetDesc.AutoSize = true;
+            this.lbNumLetDesc.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F);
+            this.lbNumLetDesc.Location = new System.Drawing.Point(1190, 582);
+            this.lbNumLetDesc.Name = "lbNumLetDesc";
+            this.lbNumLetDesc.Size = new System.Drawing.Size(53, 25);
+            this.lbNumLetDesc.TabIndex = 18;
+            this.lbNumLetDesc.Text = "0/100";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1262, 787);
+            this.Controls.Add(this.lbNumLetDesc);
+            this.Controls.Add(this.lbNumLetTitulo);
             this.Controls.Add(this.pbSettings1);
             this.Controls.Add(this.btnFinalizadas);
             this.Controls.Add(this.btnNFinalizadas);
@@ -216,6 +242,8 @@
         private System.Windows.Forms.Button btnNFinalizadas;
         private System.Windows.Forms.Button btnFinalizadas;
         private System.Windows.Forms.PictureBox pbSettings1;
+        private System.Windows.Forms.Label lbNumLetTitulo;
+        private System.Windows.Forms.Label lbNumLetDesc;
     }
 }
 

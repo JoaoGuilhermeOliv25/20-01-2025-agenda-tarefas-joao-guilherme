@@ -1,29 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Microsoft.Data.Sqlite;
 
 namespace AgendaTarefas.Repository
 {
     public class DBConnection
     {
-        public static string connectionString = "Data Source=AgendaTarefas.db;";
+        // Diretório certo do DB
+        private static readonly string PastaApp =
+            Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "AgendaTarefas");
 
+        private static readonly string CaminhoBanco =
+            Path.Combine(PastaApp, "AgendaTarefas.db");
 
-        // Conexão com o BD
+        private static readonly string connectionString =
+            $"Data Source={CaminhoBanco};";
+
         public static SqliteConnection GetConnection()
         {
+            Directory.CreateDirectory(PastaApp);
             return new SqliteConnection(connectionString);
         }
 
         public static void InicializarBD()
         {
-            // Verifica se o BD existe
+            Directory.CreateDirectory(PastaApp);
+
             using (var connection = GetConnection())
             {
                 connection.Open();
+
                 string criarTabelaTarefas = @"
                 CREATE TABLE IF NOT EXISTS Tarefas (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,7 +47,5 @@ namespace AgendaTarefas.Repository
                 }
             }
         }
-
-
     }
 }
