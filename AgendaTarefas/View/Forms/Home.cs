@@ -45,6 +45,9 @@ namespace AgendaTarefas
             listaTarefas = FiltroTarefaService.TratarFiltro(tipoF);
 
 
+
+            IniciarValoresLimitesCampos();
+
             // Carregar tarefas ao carregar o Form
             if (listaTarefas.Count == 0)
             {
@@ -245,5 +248,28 @@ namespace AgendaTarefas
             config.ShowDialog();
         }
 
+
+
+        private void lbTitulo_TextChanged(object sender, EventArgs e)
+        {
+            lbNumLetTitulo.Text = $"{lbTitulo.TextLength}/{ValidarDados.tituloMax}";
+        }
+
+        private void rtDescricao_TextChanged(object sender, EventArgs e)
+        {
+            lbNumLetDesc.Text = $"{rtDescricao.TextLength}/{ValidarDados.descMax}";
+        }
+
+
+
+        private void IniciarValoresLimitesCampos()
+        {
+            lbNumLetTitulo.Text = $"{lbTitulo.TextLength}/{ValidarDados.tituloMax}";
+            lbNumLetDesc.Text = $"{rtDescricao.TextLength}/{ValidarDados.descMax}";
+            lbTitulo.MaxLength = ValidarDados.tituloMax;
+            rtDescricao.MaxLength = ValidarDados.descMax;
+        }
+
+        
     }
 }

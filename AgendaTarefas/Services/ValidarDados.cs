@@ -9,8 +9,8 @@ namespace AgendaTarefas.Services
     public static class ValidarDados
     {
         // Limite de caracteres
-        const int tituloMax = 46;
-        const int descMax = 166;
+        public static int tituloMax = 46;
+        public static int descMax = 166;
 
 
         public static void ValidarCampos(string titulo, string desc)
