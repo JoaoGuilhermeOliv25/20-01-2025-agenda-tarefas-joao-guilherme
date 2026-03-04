@@ -1,5 +1,5 @@
 # Agenda Tarefas 
-### Aplicativo desktop desenvolvido para aplicação prática de conceitos de Arquitetura de Software
+### Aplicativo desktop desenvolvido para aplicação prática de conceitos de Arquitetura de Software, separação de responsabilidades e boas práticas de desenvolvimento.
 
 ### Tecnologias Utilizadas
  - **C#** - Linguagem principal
@@ -7,12 +7,32 @@
  - **Windows Forms** - Interface gráfica desktop
  - **SQLite** - Banco de dados relacional embarcado
  - **Visual Studio 2022** - Ambiente de desenvolvimento
- - **Arquitetura em Camadas** - Separação de responsabilidades (UI, Services e Repository) 
+ - **Arquitetura em Camadas** - Separação de responsabilidades (UI, Services e Repository)
+ - **Registro do Windows** (inicialização automática)
 
-### Imagem do Aplicativo
-O Agenda Tarefas é um aplicativo desktop desenvolvido com o objetivo de aplicar, na prática, conceitos teóricos de Arquitetura de Software, organização em camadas e boas práticas de programação.
+### Visão Geral
+O **Agenda Tarefas** é uma aplicação desktop para gerenciamento simples de tarefas, com persistência local em banco de dados SQLite.
 
-<img width="1582" height="1020" alt="print1" src="https://github.com/user-attachments/assets/fc30166a-2668-4f90-9689-32c09b108cae" />
+O projeto foi desenvolvido com o objetivo de simular um cenário real de software, aplicando conceitos como:
+Separação de responsabilidades
+Organização em camadas
+Persistência desacoplada da interface
+Gerenciamento de configurações via arquivo JSON
+Armazenamento seguro de dados em AppData
+Inicialização automática com o Windows
+
+### Interface
+
+<img width="1577" height="1016" alt="AgendaTarefa_print" src="https://github.com/user-attachments/assets/8671d5fc-368b-445b-80ea-858a28aa948d" />
+
+### Funcionalidades
+ - Cadastro de tarefas
+ - Listagem de tarefas
+ - Exclusão de tarefas
+ - Persistência em banco SQLite
+ - Criação automática do banco de dados
+ - Configuração salva em arquivo JSON
+ - Opção de iniciar com o Windows
 
 ### Objetivo do Projeto
 O projeto Agenda Tarefas foi desenvolvido com foco educacional e prático, com o objetivo de consolidar conhecimentos em desenvolvimento desktop utilizando C#, persistência de dados com SQLite e aplicação de uma arquitetura em camadas.
