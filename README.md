@@ -1,5 +1,5 @@
 # Agenda Tarefas 
-### Aplicativo desktop desenvolvido para aplicação prática de conceitos de Arquitetura de Software, separação de responsabilidades e boas práticas de desenvolvimento.
+### Aplicativo desktop para gerenciamento de tarefas desenvolvido em C# utilizando Windows Forms e SQLite, com foco na aplicação prática de conceitos de arquitetura em camadas, separação de responsabilidades e boas práticas de desenvolvimento.
 
 ### Tecnologias Utilizadas
  - **C#** - Linguagem principal
@@ -14,16 +14,21 @@
 O **Agenda Tarefas** é uma aplicação desktop para gerenciamento simples de tarefas, com persistência local em banco de dados SQLite.
 
 O projeto foi desenvolvido com o objetivo de simular um cenário real de software, aplicando conceitos como:
-Separação de responsabilidades
-Organização em camadas
-Persistência desacoplada da interface
-Gerenciamento de configurações via arquivo JSON
-Armazenamento seguro de dados em AppData
-Inicialização automática com o Windows
+ - Separação de responsabilidades
+ - Organização em camadas
+ - Persistência desacoplada da interface
+ - Gerenciamento de configurações via arquivo JSON
+ - Armazenamento seguro de dados em AppData
+ - Inicialização automática com o Windows
 
 ### Interface
 
+#### Tela Principal
 <img width="1577" height="1016" alt="AgendaTarefa_print" src="https://github.com/user-attachments/assets/8671d5fc-368b-445b-80ea-858a28aa948d" />
+
+#### Tela de Configurações
+<img width="766" height="860" alt="agenda_config" src="https://github.com/user-attachments/assets/7f9ff85b-6cb2-493c-8784-be2639a4359b" />
+
 
 ### Funcionalidades
  - Cadastro de tarefas
@@ -33,20 +38,19 @@ Inicialização automática com o Windows
  - Criação automática do banco de dados
  - Configuração salva em arquivo JSON
  - Opção de iniciar com o Windows
+ - Marcar tarefas como concluídas
+ - Filtro de tarefas (pendentes / concluídas)
+
+### Recursos do Sistema
+ - Banco SQLite criado automaticamente na primeira execução
+ - Configurações persistidas em JSON
+ - Armazenamento seguro de dados em AppData
+ - Inicialização automática com o Windows via Registro
 
 ### Objetivo do Projeto
-O projeto Agenda Tarefas foi desenvolvido com foco educacional e prático, com o objetivo de consolidar conhecimentos em desenvolvimento desktop utilizando C#, persistência de dados com SQLite e aplicação de uma arquitetura em camadas.
-A aplicação busca simular um cenário real de software, priorizando organização, separação de responsabilidades e manutenção do código.
+Este projeto foi desenvolvido com o objetivo de aplicar, na prática, conceitos de desenvolvimento de software utilizando C#, persistência de dados com SQLite e organização de código baseada em arquitetura em camadas.
 
-### Funcionalidades
- - Criação de tarefas com persistência em banco de dados SQLite
- - Exclusão de tarefas cadastradas
- - Listagem de tarefas armazenadas
- - Interface gráfica simples e objetiva
- - Organização do código seguindo arquitetura em camadas
-
-**Observação:** o projeto está em constante evolução e novas funcionalidades podem ser adicionadas futuramente.
-
+A aplicação busca simular um cenário real de desenvolvimento, priorizando organização, separação de responsabilidades e manutenção do código.
 
 ### Arquitetura do Projeto
  - **UI (Interface do Usuário)** - Responsável pela interação com o usuário através dos formulários Windows Forms.
@@ -62,7 +66,7 @@ O sistema utiliza o **SQLite**, um banco de dados relacional embarcado, ideal pa
  - Persistência automática das tarefas
  - Integração direta com C# através de biblioteca específica
 
-### Requisistos para Execução
+### Requisitos para Execução
  - Windows
  - .NET Framework compatível com o projeto(v4.8)
  - Visual Studio (recomendado para execução e edição do código)
@@ -71,7 +75,7 @@ O sistema utiliza o **SQLite**, um banco de dados relacional embarcado, ideal pa
  1. Clone o repositório do projeto:
 ```git clone https://github.com/JoaoGuilhermeOliv25/20-01-2025-agenda-tarefas-joao-guilherme.git```
  2. Abra a solução (AgendaTarefas.sln) no Visual Studio
- 3. Restaure as dependências se nescessário
+ 3. Restaure as dependências se necessário
  4. Compile e execute o projeto
 
 ### Autor
