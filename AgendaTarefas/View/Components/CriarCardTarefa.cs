@@ -36,8 +36,6 @@ namespace AgendaTarefas.Model
             // Obter os dados da tarefa criada:
             this.tituloT.Text = tarefaUser.TituloTarefa;
             this.descT.Text = tarefaUser.DescricaoTarefa;
-            this.dataCriacaoT.Text = "Criado no dia " + tarefaUser.DataCriacao.ToString("dd/MM/yyyy");
-            this.finalizado = tarefaUser.Concluida;
         }
 
 

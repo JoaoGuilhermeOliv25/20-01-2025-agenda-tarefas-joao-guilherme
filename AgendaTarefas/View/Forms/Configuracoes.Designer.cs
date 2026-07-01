@@ -98,7 +98,7 @@
             // 
             this.btnAplicar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAplicar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(437, 609);
+            this.btnAplicar.Location = new System.Drawing.Point(437, 644);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(162, 36);
             this.btnAplicar.TabIndex = 4;
@@ -110,7 +110,7 @@
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(15, 605);
+            this.btnCancelar.Location = new System.Drawing.Point(15, 640);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(162, 36);
             this.btnCancelar.TabIndex = 5;
@@ -141,10 +141,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.2F);
-            this.label4.Location = new System.Drawing.Point(16, 372);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.2F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(16, 388);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(252, 32);
+            this.label4.Size = new System.Drawing.Size(281, 36);
             this.label4.TabIndex = 8;
             this.label4.Text = "Tempo da Notificação:";
             // 
@@ -153,7 +153,7 @@
             this.rb30Min.AutoSize = true;
             this.rb30Min.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rb30Min.Font = new System.Drawing.Font("Segoe UI", 12.2F);
-            this.rb30Min.Location = new System.Drawing.Point(22, 450);
+            this.rb30Min.Location = new System.Drawing.Point(25, 468);
             this.rb30Min.Name = "rb30Min";
             this.rb30Min.Size = new System.Drawing.Size(138, 34);
             this.rb30Min.TabIndex = 9;
@@ -167,7 +167,7 @@
             this.rb1H.AutoSize = true;
             this.rb1H.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rb1H.Font = new System.Drawing.Font("Segoe UI", 12.2F);
-            this.rb1H.Location = new System.Drawing.Point(21, 490);
+            this.rb1H.Location = new System.Drawing.Point(25, 500);
             this.rb1H.Name = "rb1H";
             this.rb1H.Size = new System.Drawing.Size(96, 34);
             this.rb1H.TabIndex = 10;
@@ -181,7 +181,7 @@
             this.rb2H.AutoSize = true;
             this.rb2H.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rb2H.Font = new System.Drawing.Font("Segoe UI", 12.2F);
-            this.rb2H.Location = new System.Drawing.Point(22, 530);
+            this.rb2H.Location = new System.Drawing.Point(25, 532);
             this.rb2H.Name = "rb2H";
             this.rb2H.Size = new System.Drawing.Size(105, 34);
             this.rb2H.TabIndex = 11;
@@ -194,7 +194,7 @@
             // 
             this.btnConfigPadrao.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfigPadrao.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfigPadrao.Location = new System.Drawing.Point(269, 609);
+            this.btnConfigPadrao.Location = new System.Drawing.Point(269, 644);
             this.btnConfigPadrao.Name = "btnConfigPadrao";
             this.btnConfigPadrao.Size = new System.Drawing.Size(162, 36);
             this.btnConfigPadrao.TabIndex = 12;
@@ -207,7 +207,7 @@
             this.rb10Min.AutoSize = true;
             this.rb10Min.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rb10Min.Font = new System.Drawing.Font("Segoe UI", 12.2F);
-            this.rb10Min.Location = new System.Drawing.Point(21, 410);
+            this.rb10Min.Location = new System.Drawing.Point(25, 435);
             this.rb10Min.Name = "rb10Min";
             this.rb10Min.Size = new System.Drawing.Size(138, 34);
             this.rb10Min.TabIndex = 13;
@@ -220,8 +220,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(612, 658);
+            this.ClientSize = new System.Drawing.Size(612, 697);
             this.Controls.Add(this.rb10Min);
             this.Controls.Add(this.btnConfigPadrao);
             this.Controls.Add(this.rb2H);

@@ -90,6 +90,25 @@ namespace AgendaTarefas.Repository
 
 
 
+
+        // Método para exluir todas as tarefas criadas
+
+        /*
+        public static void DeletarTodasTarefasDB()
+        {
+            using (var connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+                string sql = "DELETE FROM Tarefas";
+                using (var cmd = new SqliteCommand(sql, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        */
+
+
         // Método para excluir uma tarefa do BD
         public static void ExcluirTarefaDB(int tarefaId)
         {

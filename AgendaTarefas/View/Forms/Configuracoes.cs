@@ -34,6 +34,7 @@ namespace AgendaTarefas.View.Forms
             config = SettingsManager.CarregarConfig();
             AplicarConfigCarregadaUI();
             VerificarAplicacaoConfig();
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
 

@@ -99,6 +99,7 @@
             // 
             this.btnCriarTarefa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCriarTarefa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCriarTarefa.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCriarTarefa.Location = new System.Drawing.Point(679, 647);
             this.btnCriarTarefa.Name = "btnCriarTarefa";
             this.btnCriarTarefa.Size = new System.Drawing.Size(570, 73);
